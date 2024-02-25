@@ -19,6 +19,10 @@
 		939492EA2B8BB62A0019C9E5 /* wrongAnswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939492E32B8BB62A0019C9E5 /* wrongAnswer.mp3 */; };
 		939492EB2B8BB62A0019C9E5 /* waitForResponse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939492E42B8BB62A0019C9E5 /* waitForResponse.mp3 */; };
 		939492EC2B8BB62A0019C9E5 /* victoryMillion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */; };
+		939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */; };
+		939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492EF2B8BC6B20019C9E5 /* GameViewController.swift */; };
+		939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */; };
+		939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F42B8BC7490019C9E5 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		939492E32B8BB62A0019C9E5 /* wrongAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrongAnswer.mp3; sourceTree = "<group>"; };
 		939492E42B8BB62A0019C9E5 /* waitForResponse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waitForResponse.mp3; sourceTree = "<group>"; };
 		939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = victoryMillion.mp3; sourceTree = "<group>"; };
+		939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		939492EF2B8BC6B20019C9E5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewController.swift; sourceTree = "<group>"; };
+		939492F42B8BC7490019C9E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +76,10 @@
 		939492C72B8B6DE30019C9E5 /* Millionaire */ = {
 			isa = PBXGroup;
 			children = (
-				939492C82B8B6DE30019C9E5 /* AppDelegate.swift */,
-				939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */,
-				939492CC2B8B6DE30019C9E5 /* MainViewController.swift */,
-				939492D12B8B6DE70019C9E5 /* Assets.xcassets */,
-				939492D32B8B6DE70019C9E5 /* LaunchScreen.storyboard */,
+				939492F62B8BC7800019C9E5 /* App */,
+				939492F32B8BC70F0019C9E5 /* ViewControllers */,
+				939492F72B8BC7960019C9E5 /* Resources */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
-				939492DE2B8BB62A0019C9E5 /* Sound */,
 			);
 			path = Millionaire;
 			sourceTree = "<group>";
@@ -91,6 +96,37 @@
 				939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		939492F32B8BC70F0019C9E5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				939492CC2B8B6DE30019C9E5 /* MainViewController.swift */,
+				939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */,
+				939492EF2B8BC6B20019C9E5 /* GameViewController.swift */,
+				939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */,
+				939492F42B8BC7490019C9E5 /* ResultViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		939492F62B8BC7800019C9E5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				939492C82B8B6DE30019C9E5 /* AppDelegate.swift */,
+				939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */,
+				939492D32B8B6DE70019C9E5 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		939492F72B8BC7960019C9E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				939492D12B8B6DE70019C9E5 /* Assets.xcassets */,
+				939492DE2B8BB62A0019C9E5 /* Sound */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,8 +206,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
+				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
+				939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */,
+				939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */,
 				939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
