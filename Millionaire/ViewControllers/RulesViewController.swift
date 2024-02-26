@@ -54,7 +54,7 @@ final class RulesViewController: UIViewController {
         element.layer.cornerRadius = 15
         element.layer.borderColor = UIColor.white.cgColor
         element.layer.borderWidth = 1
-        //        element.addTarget(self, action: #selector(startGameButtonTappet), for: .touchUpInside)
+        element.addTarget(self, action: #selector(startGameButtonTappet), for: .touchUpInside)
         //
         //        let gradient = CAGradientLayer()
         //            gradient.colors = [
@@ -78,11 +78,13 @@ final class RulesViewController: UIViewController {
     }
     
     @objc private func startGameButtonTappet() {
+        let gameViewController = GameViewController()
+        self.navigationController?.pushViewController(gameViewController, animated: true)
     }
     
 }
 
-extension ViewController {
+extension RulesViewController {
     
     private func setViews() {
         
