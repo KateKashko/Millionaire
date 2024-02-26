@@ -10,6 +10,7 @@ import UIKit
 class AmountViewController: UITableViewController {
 
     let backGround = UIImageView()
+    let awardArray = SumOfPrice()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class AmountViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return awardArray.sumOfPrice.count
     }
 
     private func setupBackground() {
