@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .yellow
         
         NetworkManager.shared.getQuestion(for: .easy) { result in
             switch result {
