@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct AmoutArray {
+struct Amount {
     
     let amount: Int
     let sumOfPrice: Int
+    let canTake: Bool
     
 }
