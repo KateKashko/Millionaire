@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AmountTableViewController: UITableViewController {
+class AmountVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
