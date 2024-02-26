@@ -12,6 +12,19 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        
+        NetworkManager.shared.getQuestion(for: .easy) { result in
+            switch result {
+            case .success(let question):
+                question.results.forEach {
+                    print($0.question.htmlDecoded)
+                    print("Correct answer: \($0.correctAnswer)")
+                    print("Incorrect answers \($0.incorrectAnswers)")
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
     }
 
 
