@@ -7,16 +7,14 @@
 
 import UIKit
 
-class AmountTableViewController: UITableViewController {
+class AmountViewController: UITableViewController {
 
+    let backGround = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       
     }
 
     // MARK: - Table view data source
@@ -31,6 +29,24 @@ class AmountTableViewController: UITableViewController {
         return 0
     }
 
+    private func setupBackground() {
+            view.addSubview(backGround)
+            backGround.image = UIImage(named: "mainBG")
+            backGround.contentMode = .scaleAspectFill
+            
+            backGround.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                backGround.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                backGround.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                backGround.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                backGround.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ])
+        }
+    
+    
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
