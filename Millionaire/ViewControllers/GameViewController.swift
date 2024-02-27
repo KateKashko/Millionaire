@@ -3,18 +3,10 @@ import SnapKit
 
 class GameViewController: UIViewController {
     
-    // MARK: - Properties
-    
-    let color1 = UIColor(hex: "4872C4")
-    let color2 = UIColor(hex: "203960")
-    let color3 = UIColor(hex: "4872C4")
-    
-    lazy var colors = [color1, color2, color3]
-    
     // MARK: - UI
     private lazy var backgroundImage: UIImageView = {
         let element = UIImageView()
-        element.image = UIImage(named: "mainBG")
+        element.image = LocalConstants.mainBGImage
         element.contentMode = .scaleToFill
         return element
     }()
@@ -39,6 +31,7 @@ class GameViewController: UIViewController {
     private let answersStackView = UIStackView(
         axis: .vertical,
         distribution: .fillEqually,
+        spacing: 20,
         alignment: .fill
     )
     
@@ -60,13 +53,13 @@ class GameViewController: UIViewController {
     )
     
     private lazy var questionLabel = UILabel (
-        text: "Traditonal Chinese painting technique is..."
+        text: "Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is..."
     )
     
-    private lazy var buttonA = UIButton(text: "A: First Option")
-    private lazy var buttonB = UIButton(text: "B: Second Option")
-    private lazy var buttonC = UIButton(text: "C: Third Option")
-    private lazy var buttonD = UIButton(text: "D: Fourth Option")
+    private lazy var buttonA = CustomGradientButton(prefix: "A", text: "First Option")
+    private lazy var buttonB = CustomGradientButton(prefix: "B", text: "Second Option")
+    private lazy var buttonC = CustomGradientButton(prefix: "C", text: "Third Option")
+    private lazy var buttonD = CustomGradientButton(prefix: "D", text: "Other Option")
     
     private lazy var fiftyFiftyButton = UIButton()
     private lazy var friendCallButton = UIButton()
@@ -74,8 +67,7 @@ class GameViewController: UIViewController {
     
     private let fiftyFiftyImageView = UIImageView(imageName: "5050")
     private let friendCallImageView = UIImageView(imageName: "callToFriend")
-    private let audienceAssistantImageView = UIImageView(imageName: "callToFriend")
-    
+    private let audienceAssistantImageView = UIImageView(imageName: "help")
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -83,15 +75,6 @@ class GameViewController: UIViewController {
         setupView()
         setupConstraints()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        [buttonA, buttonB, buttonC, buttonD].forEach { button in
-              button.applyGradient(colors)
-          }
-    }
-
     
     // MARK: - Setup View
     private func setupView(){
@@ -127,12 +110,11 @@ extension GameViewController {
         backgroundImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide).inset(5)
+            make.edges.equalTo(view.safeAreaLayoutGuide).inset(15)
         }
         answersStackView.snp.makeConstraints { make in
-            make.height.equalTo(350)
+            make.height.equalTo(250)
         }
         answersStackView.snp.makeConstraints { make in
             make.width.equalTo(350)
@@ -155,26 +137,11 @@ extension UIStackView {
         self.distribution = distribution
         self.spacing = spacing
         self.alignment = alignment
-   
-    }
-}
-
-
-extension UIButton {
-  
-    
-    convenience init(text: String? = nil, image: String? = nil) {
-        self.init(type: .system)
-                
-        self.setTitle(text, for: .normal)
-        self.layer.cornerRadius = 10
-        self.titleLabel?.font = .systemFont(ofSize: 24, weight: .medium)
-        self.setTitleColor(.white, for: .normal)
- 
     }
 }
 
 extension UILabel {
+    
     convenience init(
         text: String,
         font: UIFont = .systemFont(ofSize: 24, weight: .medium)
@@ -204,33 +171,10 @@ extension UIImageView {
 }
 
 
-
-extension UIColor {
-    convenience init(hex: String,
-                     alpha: CGFloat = 1.0) {
-        
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        
-        var int = UInt64()
-        Scanner(string: hex).scanHexInt64(&int)
-        
-        let a, r, g, b: UInt64
-        
-        switch hex.count {
-            
-        case 3:
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
-        }
-        
-        self.init(red: CGFloat(r) / 255,
-                  green: CGFloat(g) / 255,
-                  blue: CGFloat(b) / 255,
-                  alpha: CGFloat(a) / 255)
-    }
-}
+// MARK: LocalConstants
+private enum LocalConstants {
+    
+    static let mainBGImage = UIImage(named: "mainBG")
+    static let imageViewHorizontalInset: CGFloat = 10
+    static let imageViewHeight: CGFloat = 300
+ }
