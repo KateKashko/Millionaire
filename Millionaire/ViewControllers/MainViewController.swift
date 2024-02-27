@@ -31,10 +31,22 @@ final class MainViewController: UIViewController {
         setupButton(gameRulesButton, withTitle: "Правила игры")
         
         setupLayout()
+        
+        addAction()
     }
     
     //MARK: - Actions
+    @objc func startGame() {
+        let gameVC = GameViewController()
+        gameVC.modalPresentationStyle = .fullScreen
+        present(gameVC, animated: true)
+    }
     
+    @objc func showRules() {
+        let rulesVC = RulesViewController()
+        rulesVC.modalPresentationStyle = .fullScreen
+        present(rulesVC, animated: true)
+    }
 }
 
 //MARK: - Private Methods
@@ -60,6 +72,11 @@ private extension MainViewController {
         button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         view.addSubview(button)
+    }
+    
+    func addAction() {
+        startGameButton.addTarget(self, action: #selector(startGame), for: .touchUpInside)
+        gameRulesButton.addTarget(self, action: #selector(showRules), for: .touchUpInside)
     }
 }
 
