@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31472B662B8D28C80068D848 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B652B8D28C80068D848 /* Amount.swift */; };
+		31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B672B8D294B0068D848 /* SumOfAward.swift */; };
+		31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B692B8D457F0068D848 /* CustomAwardCell.swift */; };
 		83361EBF2B8D0D530089B169 /* MError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EBE2B8D0D530089B169 /* MError.swift */; };
 		83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC12B8D0D630089B169 /* String+Ext.swift */; };
 		83361EC62B8D0D770089B169 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC42B8D0D770089B169 /* Question.swift */; };
@@ -26,12 +29,15 @@
 		939492EC2B8BB62A0019C9E5 /* victoryMillion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */; };
 		939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */; };
 		939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492EF2B8BC6B20019C9E5 /* GameViewController.swift */; };
-		939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */; };
+		939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountViewController.swift */; };
 		939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F42B8BC7490019C9E5 /* ResultViewController.swift */; };
 		B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6B10ADF2B8CB01900CB3F23 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31472B652B8D28C80068D848 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
+		31472B672B8D294B0068D848 /* SumOfAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumOfAward.swift; sourceTree = "<group>"; };
+		31472B692B8D457F0068D848 /* CustomAwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAwardCell.swift; sourceTree = "<group>"; };
 		83361EBE2B8D0D530089B169 /* MError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MError.swift; sourceTree = "<group>"; };
 		83361EC12B8D0D630089B169 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83361EC42B8D0D770089B169 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -53,7 +59,7 @@
 		939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = victoryMillion.mp3; sourceTree = "<group>"; };
 		939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		939492EF2B8BC6B20019C9E5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewController.swift; sourceTree = "<group>"; };
+		939492F12B8BC7030019C9E5 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		939492F42B8BC7490019C9E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31472B6B2B8D45850068D848 /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
 		83361EBD2B8D0D530089B169 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +104,8 @@
 			children = (
 				83361EC42B8D0D770089B169 /* Question.swift */,
 				83361EC52B8D0D770089B169 /* Content.swift */,
+				31472B652B8D28C80068D848 /* Amount.swift */,
+				31472B672B8D294B0068D848 /* SumOfAward.swift */,
 			);
 			path = "API Model";
 			sourceTree = "<group>";
@@ -126,6 +142,7 @@
 				83361EC32B8D0D770089B169 /* API Model */,
 				83361EC82B8D0D810089B169 /* Managers */,
 				939492F62B8BC7800019C9E5 /* App */,
+				31472B6B2B8D45850068D848 /* CustomItems */,
 				939492F32B8BC70F0019C9E5 /* ViewControllers */,
 				939492F72B8BC7960019C9E5 /* Resources */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
@@ -153,7 +170,7 @@
 				939492CC2B8B6DE30019C9E5 /* MainViewController.swift */,
 				939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */,
 				939492EF2B8BC6B20019C9E5 /* GameViewController.swift */,
-				939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */,
+				939492F12B8BC7030019C9E5 /* AmountViewController.swift */,
 				939492F42B8BC7490019C9E5 /* ResultViewController.swift */,
 			);
 			path = ViewControllers;
@@ -262,17 +279,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				83361ECA2B8D0D810089B169 /* NetworkManager.swift in Sources */,
+				31472B662B8D28C80068D848 /* Amount.swift in Sources */,
 				83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */,
 				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,
+				31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
 				83361EC72B8D0D770089B169 /* Content.swift in Sources */,
 				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
 				83361EC62B8D0D770089B169 /* Question.swift in Sources */,
-				939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */,
+				939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */,
 				939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */,
 				83361EBF2B8D0D530089B169 /* MError.swift in Sources */,
 				939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */,
+				31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
