@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //    window?.makeKeyAndVisible()
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = GameViewController()
+        window.rootViewController = RulesViewController()
         window.makeKeyAndVisible()
         self.window = window
     }

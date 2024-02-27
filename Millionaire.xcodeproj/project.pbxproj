@@ -33,6 +33,7 @@
 		939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F42B8BC7490019C9E5 /* ResultViewController.swift */; };
 		B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */; };
 		B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */; };
+		B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */; };
 		B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6B10ADF2B8CB01900CB3F23 /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		939492F42B8BC7490019C9E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
 		B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientButton.swift; sourceTree = "<group>"; };
+		B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				83361EC12B8D0D630089B169 /* String+Ext.swift */,
 				B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */,
+				B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
 				83361EC72B8D0D770089B169 /* Content.swift in Sources */,
+				B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */,
 				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
 				B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */,
