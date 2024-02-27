@@ -8,14 +8,16 @@
 import UIKit
 
 class CustomAwardCell: UITableViewCell {
-
-        // Левый и правый UILabel
+    
+    var sumOfAward = SumOfAward()
+    
         let leftLabel = UILabel()
         let rightLabel = UILabel()
-
-        // Метод для настройки внешнего вида ячейки
+        
         func setupCell() {
-            // Настройте левый UILabel
+            
+            self.backgroundColor = UIColor.clear
+            
             leftLabel.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(leftLabel)
             NSLayoutConstraint.activate([
@@ -23,7 +25,6 @@ class CustomAwardCell: UITableViewCell {
                 leftLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
 
-            // Настройте правый UILabel
             rightLabel.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(rightLabel)
             NSLayoutConstraint.activate([
@@ -33,9 +34,9 @@ class CustomAwardCell: UITableViewCell {
         }
 
         // Метод для установки данных в ячейку
-        func configure(with amount: Amount) {
-            leftLabel.text = "Num: \(amount.num)"
-            rightLabel.text = "Award: \(amount.award)"
+    func configure(with award: Amount) {
+        leftLabel.text = "Num: \(award.num)"
+        rightLabel.text = "Award: \(award.award)"
         }
     }
 

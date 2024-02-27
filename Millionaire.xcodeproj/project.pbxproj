@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		31472B662B8D28C80068D848 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B652B8D28C80068D848 /* Amount.swift */; };
 		31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B672B8D294B0068D848 /* SumOfAward.swift */; };
+		31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B692B8D457F0068D848 /* CustomAwardCell.swift */; };
 		83361EBF2B8D0D530089B169 /* MError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EBE2B8D0D530089B169 /* MError.swift */; };
 		83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC12B8D0D630089B169 /* String+Ext.swift */; };
 		83361EC62B8D0D770089B169 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC42B8D0D770089B169 /* Question.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		31472B652B8D28C80068D848 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
 		31472B672B8D294B0068D848 /* SumOfAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumOfAward.swift; sourceTree = "<group>"; };
+		31472B692B8D457F0068D848 /* CustomAwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAwardCell.swift; sourceTree = "<group>"; };
 		83361EBE2B8D0D530089B169 /* MError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MError.swift; sourceTree = "<group>"; };
 		83361EC12B8D0D630089B169 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83361EC42B8D0D770089B169 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31472B6B2B8D45850068D848 /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
 		83361EBD2B8D0D530089B169 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 				83361EC32B8D0D770089B169 /* API Model */,
 				83361EC82B8D0D810089B169 /* Managers */,
 				939492F62B8BC7800019C9E5 /* App */,
+				31472B6B2B8D45850068D848 /* CustomItems */,
 				939492F32B8BC70F0019C9E5 /* ViewControllers */,
 				939492F72B8BC7960019C9E5 /* Resources */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
@@ -273,6 +284,7 @@
 				939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */,
 				83361EBF2B8D0D530089B169 /* MError.swift in Sources */,
 				939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */,
+				31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
