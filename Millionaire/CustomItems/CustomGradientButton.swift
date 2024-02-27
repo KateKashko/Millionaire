@@ -6,7 +6,6 @@ class CustomGradientButton: UIButton {
     private let prefixLabel = UILabel(text: "")
     private let answerLabel = UILabel(text: "")
     
-    
     // MARK: - Init
     init(prefix: String, text: String) {
         super.init(frame: .zero)
@@ -40,7 +39,6 @@ class CustomGradientButton: UIButton {
         
         addSubview(prefixLabel)
         addSubview(answerLabel)
-        
         
         addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
