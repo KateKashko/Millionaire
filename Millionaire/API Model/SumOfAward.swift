@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct SumOfPrice {
+struct SumOfAward {
     
-    let sumOfPrice = [
+    var rawNumber = 0
+    
+    let sumOfAward = [
         Amount(num: 1, award: 100, canTake: false),
         Amount(num: 2, award: 200, canTake: false),
         Amount(num: 3, award: 300, canTake: false),
@@ -27,4 +29,22 @@ struct SumOfPrice {
         Amount(num: 15, award: 1000000, canTake: true)
     ]
     
+    mutating func checkRawNumber() -> Int {
+        if rawNumber < 15 {
+            rawNumber += 1
+        }
+        return rawNumber
+    }
+    
+    func getNumberOfAward() -> Int {
+        return sumOfAward[rawNumber].num
+    }
+    
+    func getSumOfAward() -> Int {
+        return sumOfAward[rawNumber].award
+    }
+    
+    func getCanTakeStatus() -> Bool {
+        return sumOfAward[rawNumber].canTake
+    }
 }
