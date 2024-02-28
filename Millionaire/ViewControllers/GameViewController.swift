@@ -5,7 +5,6 @@ class GameViewController: UIViewController {
     
     // MARK: - Properties
     private var gameTimer: Timer?
-    
     private var remainingTime = LocalConstants.numberOfSeconds
     
     // MARK: - UI
@@ -88,8 +87,10 @@ class GameViewController: UIViewController {
         setupView()
         setupActions()
         setupConstraints()
+        SoundManager.shared.playSound(LocalConstants.waitForResponseSound)
         startTimer()
-    
+        
+        
     }
 
     // MARK: - Private methods
@@ -99,7 +100,7 @@ class GameViewController: UIViewController {
         friendCallButton.addTarget(self, action: #selector(friendCallTapped), for: .touchUpInside)
         audienceAssistantButton.addTarget(self, action: #selector(audienceAssistantTapped), for: .touchUpInside)
         
-//        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
+        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
     }
     
     private func startTimer() {
@@ -128,6 +129,14 @@ class GameViewController: UIViewController {
     @objc private func audienceAssistantTapped() {
         audienceAssistantImageView.image = LocalConstants.audienceHelpUsedImage
     }
+    
+    @objc private func takeMoneyTapped() {
+        SoundManager.shared.playSound(LocalConstants.victoryMillion)
+        
+        goToResultViewController()
+    }
+
+    
     @objc private func updateTimer(){
         
         remainingTime -= 1
@@ -199,6 +208,9 @@ extension GameViewController {
         audienceAssistantButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        takeMoneyButton.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
@@ -214,4 +226,6 @@ private enum LocalConstants {
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
     static let takeMoneyImage = UIImage(named: "monetization_on")
     static let numberOfSeconds = 30
+    static let waitForResponseSound = "waitForResponse"
+    static let victoryMillion = "victoryMillion"
  }

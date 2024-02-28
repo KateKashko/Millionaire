@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 final class MainViewController: UIViewController {
     
@@ -33,6 +34,8 @@ final class MainViewController: UIViewController {
         setupLayout()
         
         addAction()
+        
+        SoundManager.shared.playSound("startApp")
     }
     
     //MARK: - Actions
