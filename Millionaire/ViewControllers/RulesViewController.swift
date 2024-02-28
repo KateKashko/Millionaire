@@ -75,8 +75,10 @@ final class RulesViewController: UIViewController {
     }
     
     @objc private func startGameButtonTappet() {
-        let gameViewController = GameViewController()
-        self.navigationController?.pushViewController(gameViewController, animated: true)
+        let gameVC = GameViewController()
+        gameVC.modalPresentationStyle = .fullScreen
+        gameVC.modalTransitionStyle = .crossDissolve
+        present(gameVC, animated: true)
     }
     
 }
