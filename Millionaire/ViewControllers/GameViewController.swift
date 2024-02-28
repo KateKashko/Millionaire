@@ -59,10 +59,10 @@ class GameViewController: UIViewController {
     private let questionLabel = UILabel (
         text: "Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese ")
     
-    private let buttonA = CustomGradientButton(prefix: "A", text: "First Option")
-    private let buttonB = CustomGradientButton(prefix: "B", text: "SecondOlet")
-    private let buttonC = CustomGradientButton(prefix: "C", text: "Third Option")
-    private let buttonD = CustomGradientButton(prefix: "D", text: "Other Option")
+    private let buttonA = CustomAnswersButton(prefix: "A", text: "First Option")
+    private let buttonB = CustomAnswersButton(prefix: "B", text: "SecondOlet")
+    private let buttonC = CustomAnswersButton(prefix: "C", text: "Third Option")
+    private let buttonD = CustomAnswersButton(prefix: "D", text: "Other Option")
     
     private let fiftyFiftyButton = UIButton()
     private let friendCallButton = UIButton()
