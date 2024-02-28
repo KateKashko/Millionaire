@@ -136,7 +136,7 @@ class GameViewController: UIViewController {
     }
     
     
-    @objc private func checkAnswer(sender: CustomGradientButton) {
+    @objc private func checkAnswer(sender: CustomAnswersButton) {
         if sender.answerTitle == self.correctAnswer {
             print("Correct!")
         } else {

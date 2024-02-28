@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomGradientButton: UIButton {
+class CustomAnswersButton: UIButton {
     
     private let prefixLabel = UILabel(text: "")
     private let answerLabel = UILabel(text: "")
