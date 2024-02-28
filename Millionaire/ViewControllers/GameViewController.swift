@@ -3,6 +3,11 @@ import SnapKit
 
 class GameViewController: UIViewController {
     
+    // MARK: - Properties
+    private var gameTimer: Timer?
+    
+    private var remainingTime = LocalConstants.numberOfSeconds
+    
     // MARK: - UI
     private lazy var backgroundImage: UIImageView = {
         let element = UIImageView()
@@ -46,8 +51,8 @@ class GameViewController: UIViewController {
         text: "100 RUB"
     )
     
-    private let timerLabel = UILabel(
-        text: "30",
+    private lazy var timerLabel = UILabel(
+        text: "\(remainingTime)",
         font: .systemFont(ofSize: 64, weight: .medium)
     )
     
@@ -64,7 +69,6 @@ class GameViewController: UIViewController {
     private let audienceAssistantButton = UIButton()
     private let takeMoneyButton = UIButton()
     
- 
     private let fiftyFiftyImageView = UIImageView(
         withImage: LocalConstants.fiftyFiftyImage
     )
@@ -84,11 +88,11 @@ class GameViewController: UIViewController {
         setupView()
         setupActions()
         setupConstraints()
-        
-
+        startTimer()
+    
     }
 
-    // MARK: - Setup Actions
+    // MARK: - Private methods
     private func setupActions() {
 
         fiftyFiftyButton.addTarget(self, action: #selector(fiftyFiftyTapped), for: .touchUpInside)
@@ -98,10 +102,24 @@ class GameViewController: UIViewController {
 //        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
     }
     
+    private func startTimer() {
+       let gameTimer = Timer.scheduledTimer(
+        timeInterval: 1.0,
+        target: self,
+        selector: #selector(updateTimer),
+        userInfo: nil,
+        repeats: true
+       )
+    }
+    
+    private func goToResultViewController() {
+        let resultVC = ResultViewController()
+        self.present(resultVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Objc methods
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
         fiftyFiftyImageView.image = LocalConstants.fiftyFiftyUsedImage
-        
     }
     @objc private func friendCallTapped() {
         friendCallImageView.image = LocalConstants.friendCallUsedImage
@@ -110,8 +128,19 @@ class GameViewController: UIViewController {
     @objc private func audienceAssistantTapped() {
         audienceAssistantImageView.image = LocalConstants.audienceHelpUsedImage
     }
-
-    
+    @objc private func updateTimer(){
+        
+        remainingTime -= 1
+        timerLabel.text = "\(remainingTime)"
+        
+        if remainingTime <= 0 {
+            
+            gameTimer?.invalidate()
+            gameTimer = nil
+            
+            goToResultViewController()
+        }
+    }
     // MARK: - Setup View
     private func setupView(){
     
@@ -184,4 +213,5 @@ private enum LocalConstants {
     static let friendCallUsedImage = UIImage(named: "callToFriendUsed")
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
     static let takeMoneyImage = UIImage(named: "monetization_on")
+    static let numberOfSeconds = 30
  }
