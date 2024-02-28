@@ -42,7 +42,6 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.contentMode = .scaleAspectFill
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
-        tableView.backgroundView = nil
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: backGround.topAnchor, constant: 30),
@@ -68,11 +67,15 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomAwardCell
-        cell.leftLabel.textColor = .yellow
-        cell.rightLabel.textColor = .yellow
+    
         cell.setupCell()
         let amount = sumOfAward.sumOfAward[indexPath.row]
         cell.configure(with: amount)
+        let gradientLayer = cell.getColorOfLabel(colorType: amount)
+        cell.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.frame = cell.bounds
+        cell.layer.cornerRadius = 15
+        gradientLayer.cornerRadius = 20
         return cell
     }
     
