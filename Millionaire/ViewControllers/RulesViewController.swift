@@ -48,18 +48,7 @@ final class RulesViewController: UIViewController {
         return content
     }()
     
-    private let startGameButton: UIButton = {
-        let element = UIButton()
-        element.setTitle("Начать игру", for: .normal)
-        element.setTitleColor(.white, for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .medium)
-        element.layer.cornerRadius = 15
-        element.layer.borderColor = UIColor.white.cgColor
-        element.layer.borderWidth = 1
-        element.addTarget(self, action: #selector(startGameButtonTappet), for: .touchUpInside)
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+    private let startGameButton = UIButton(title: "Начать игру")
     
     
     // MARK: - Life Cycle
@@ -71,12 +60,18 @@ final class RulesViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.startGameButton.applyGradient()
+        self.startGameButton.applyGradient(colors: [
+            UIColor(named: "greenButton") ?? .clear,
+            UIColor(named: "greenButtonShadow") ?? .clear,
+            UIColor(named: "greenButton") ?? .clear
+        ])
     }
     
     @objc private func startGameButtonTappet() {
-//        let gameViewController = GameViewController()
-//        self.navigationController?.pushViewController(gameViewController, animated: true)
+        let gameVC = GameViewController()
+        gameVC.modalPresentationStyle = .fullScreen
+        gameVC.modalTransitionStyle = .crossDissolve
+        present(gameVC, animated: true)
     }
     
 }
