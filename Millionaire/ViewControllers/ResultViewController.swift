@@ -128,9 +128,8 @@ extension ResultViewController {
     }
 }
 
-#Preview("ResultVC") {
-    ResultViewController()
-}
+
+
 
 //extension UIColor {
 //    func hex(_ rgbValue: UInt64) -> UIColor {
