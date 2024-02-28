@@ -15,6 +15,8 @@
 		83361EC62B8D0D770089B169 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC42B8D0D770089B169 /* Question.swift */; };
 		83361EC72B8D0D770089B169 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC52B8D0D770089B169 /* Content.swift */; };
 		83361ECA2B8D0D810089B169 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC92B8D0D810089B169 /* NetworkManager.swift */; };
+		83361ED22B8FC9430089B169 /* CustomGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361ED12B8FC9430089B169 /* CustomGradientButton.swift */; };
+		83361ED42B8FCA4D0089B169 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361ED32B8FCA4D0089B169 /* UIViewController+Ext.swift */; };
 		939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492C82B8B6DE30019C9E5 /* AppDelegate.swift */; };
 		939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */; };
 		939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CC2B8B6DE30019C9E5 /* MainViewController.swift */; };
@@ -32,7 +34,6 @@
 		939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountViewController.swift */; };
 		939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F42B8BC7490019C9E5 /* ResultViewController.swift */; };
 		B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */; };
-		B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */; };
 		B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */; };
 		B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6B10ADF2B8CB01900CB3F23 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,8 @@
 		83361EC42B8D0D770089B169 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		83361EC52B8D0D770089B169 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		83361EC92B8D0D810089B169 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		83361ED12B8FC9430089B169 /* CustomGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomGradientButton.swift; path = Millionaire/Extensions/CustomGradientButton.swift; sourceTree = SOURCE_ROOT; };
+		83361ED32B8FCA4D0089B169 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		939492C52B8B6DE30019C9E5 /* Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		939492C82B8B6DE30019C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		939492F12B8BC7030019C9E5 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		939492F42B8BC7490019C9E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
-		B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientButton.swift; sourceTree = "<group>"; };
 		B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,13 +83,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31472B6B2B8D45850068D848 /* CustomItems */ = {
+		31472B6B2B8D45850068D848 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
-				B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */,
+				83361ED12B8FC9430089B169 /* CustomGradientButton.swift */,
 			);
-			path = CustomItems;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		83361EBD2B8D0D530089B169 /* Utilities */ = {
@@ -104,6 +106,7 @@
 				83361EC12B8D0D630089B169 /* String+Ext.swift */,
 				B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */,
 				B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */,
+				83361ED32B8FCA4D0089B169 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,7 +154,7 @@
 				83361EC32B8D0D770089B169 /* API Model */,
 				83361EC82B8D0D810089B169 /* Managers */,
 				939492F62B8BC7800019C9E5 /* App */,
-				31472B6B2B8D45850068D848 /* CustomItems */,
+				31472B6B2B8D45850068D848 /* CustomViews */,
 				939492F32B8BC70F0019C9E5 /* ViewControllers */,
 				939492F72B8BC7960019C9E5 /* Resources */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
@@ -287,12 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83361ED42B8FCA4D0089B169 /* UIViewController+Ext.swift in Sources */,
 				83361ECA2B8D0D810089B169 /* NetworkManager.swift in Sources */,
 				31472B662B8D28C80068D848 /* Amount.swift in Sources */,
 				83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */,
 				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,
 				31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */,
-				B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */,
+				83361ED22B8FC9430089B169 /* CustomGradientButton.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
 				83361EC72B8D0D770089B169 /* Content.swift in Sources */,
 				B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */,
