@@ -16,6 +16,8 @@ extension NSMutableAttributedString {
 
 final class RulesViewController: UIViewController {
     
+    // MARK: - UI
+    
     private lazy var backgroundImageView: UIImageView = {
         let element = UIImageView()
         element.image = UIImage(named: "gameBG")
@@ -55,21 +57,12 @@ final class RulesViewController: UIViewController {
         element.layer.borderColor = UIColor.white.cgColor
         element.layer.borderWidth = 1
         element.addTarget(self, action: #selector(startGameButtonTappet), for: .touchUpInside)
-        //
-        //        let gradient = CAGradientLayer()
-        //            gradient.colors = [
-        //                UIColor(red: 139 / 255, green: 236 / 255, blue: 90 / 255, alpha: 1).cgColor,
-        //                UIColor(red: 65 / 255, green: 179 / 255, blue: 70 / 255, alpha: 1).cgColor,
-        //                UIColor(red: 139 / 255, green: 236 / 255, blue: 90 / 255, alpha: 1).cgColor
-        //            ]
-        //            gradient.locations = [0, 0.5, 1]
-        //            gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
-        //            gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
-        //            gradient.frame = CGRect(x: 0, y: 0, width: element.bounds.width, height: element.bounds.height)
-        //            element.layer.insertSublayer(gradient, at: 0)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,13 +70,17 @@ final class RulesViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        self.startGameButton.applyGradient()
+    }
+    
     @objc private func startGameButtonTappet() {
-        let gameViewController = GameViewController()
-        self.navigationController?.pushViewController(gameViewController, animated: true)
+//        let gameViewController = GameViewController()
+//        self.navigationController?.pushViewController(gameViewController, animated: true)
     }
     
 }
-
+// MARK: - Extension
 extension RulesViewController {
     
     private func setViews() {
@@ -91,7 +88,7 @@ extension RulesViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(mainLabel)
         view.addSubview(rulesText)
-        view.addSubview(startGameButton)
+        view.addSubview(self.startGameButton)
     }
     
     private func setupConstraints() {
@@ -120,3 +117,20 @@ extension RulesViewController {
     }
 }
 
+extension UIView {
+    func applyGradient() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [
+            UIColor(red: 119 / 255, green: 221 / 255, blue: 78 / 255, alpha: 1).cgColor,
+            UIColor(red: 65 / 255, green: 179 / 255, blue: 70 / 255, alpha: 1).cgColor,
+            UIColor(red: 119 / 255, green: 221 / 255, blue: 78 / 255, alpha: 1).cgColor
+        ]
+        gradient.locations = [0, 0.5, 1]
+        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
+        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
+        gradient.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: -1, c: 1, d: 0, tx: 0, ty: 1))
+        gradient.frame = self.bounds
+        gradient.cornerRadius = 15
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31472B662B8D28C80068D848 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B652B8D28C80068D848 /* Amount.swift */; };
+		31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B672B8D294B0068D848 /* SumOfAward.swift */; };
+		31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31472B692B8D457F0068D848 /* CustomAwardCell.swift */; };
 		83361EBF2B8D0D530089B169 /* MError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EBE2B8D0D530089B169 /* MError.swift */; };
 		83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC12B8D0D630089B169 /* String+Ext.swift */; };
 		83361EC62B8D0D770089B169 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EC42B8D0D770089B169 /* Question.swift */; };
@@ -26,11 +29,18 @@
 		939492EC2B8BB62A0019C9E5 /* victoryMillion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */; };
 		939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */; };
 		939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492EF2B8BC6B20019C9E5 /* GameViewController.swift */; };
-		939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */; };
+		939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F12B8BC7030019C9E5 /* AmountViewController.swift */; };
 		939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492F42B8BC7490019C9E5 /* ResultViewController.swift */; };
+		B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */; };
+		B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */; };
+		B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */; };
+		B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6B10ADF2B8CB01900CB3F23 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31472B652B8D28C80068D848 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
+		31472B672B8D294B0068D848 /* SumOfAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumOfAward.swift; sourceTree = "<group>"; };
+		31472B692B8D457F0068D848 /* CustomAwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAwardCell.swift; sourceTree = "<group>"; };
 		83361EBE2B8D0D530089B169 /* MError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MError.swift; sourceTree = "<group>"; };
 		83361EC12B8D0D630089B169 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83361EC42B8D0D770089B169 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -52,8 +62,11 @@
 		939492E52B8BB62A0019C9E5 /* victoryMillion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = victoryMillion.mp3; sourceTree = "<group>"; };
 		939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		939492EF2B8BC6B20019C9E5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewController.swift; sourceTree = "<group>"; };
+		939492F12B8BC7030019C9E5 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		939492F42B8BC7490019C9E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
+		B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientButton.swift; sourceTree = "<group>"; };
+		B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +74,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31472B6B2B8D45850068D848 /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
+				B60D80EA2B8DA1AA00236CC6 /* CustomGradientButton.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
 		83361EBD2B8D0D530089B169 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				83361EC12B8D0D630089B169 /* String+Ext.swift */,
+				B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */,
+				B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -88,6 +113,8 @@
 			children = (
 				83361EC42B8D0D770089B169 /* Question.swift */,
 				83361EC52B8D0D770089B169 /* Content.swift */,
+				31472B652B8D28C80068D848 /* Amount.swift */,
+				31472B672B8D294B0068D848 /* SumOfAward.swift */,
 			);
 			path = "API Model";
 			sourceTree = "<group>";
@@ -124,6 +151,7 @@
 				83361EC32B8D0D770089B169 /* API Model */,
 				83361EC82B8D0D810089B169 /* Managers */,
 				939492F62B8BC7800019C9E5 /* App */,
+				31472B6B2B8D45850068D848 /* CustomItems */,
 				939492F32B8BC70F0019C9E5 /* ViewControllers */,
 				939492F72B8BC7960019C9E5 /* Resources */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
@@ -151,7 +179,7 @@
 				939492CC2B8B6DE30019C9E5 /* MainViewController.swift */,
 				939492ED2B8BC6A10019C9E5 /* RulesViewController.swift */,
 				939492EF2B8BC6B20019C9E5 /* GameViewController.swift */,
-				939492F12B8BC7030019C9E5 /* AmountTableViewController.swift */,
+				939492F12B8BC7030019C9E5 /* AmountViewController.swift */,
 				939492F42B8BC7490019C9E5 /* ResultViewController.swift */,
 			);
 			path = ViewControllers;
@@ -192,6 +220,9 @@
 			dependencies = (
 			);
 			name = Millionaire;
+			packageProductDependencies = (
+				B6B10ADF2B8CB01900CB3F23 /* SnapKit */,
+			);
 			productName = Millionaire;
 			productReference = 939492C52B8B6DE30019C9E5 /* Millionaire.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +251,9 @@
 				Base,
 			);
 			mainGroup = 939492BC2B8B6DE30019C9E5;
+			packageReferences = (
+				B6B10ADE2B8CB01900CB3F23 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 939492C62B8B6DE30019C9E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,17 +288,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				83361ECA2B8D0D810089B169 /* NetworkManager.swift in Sources */,
+				31472B662B8D28C80068D848 /* Amount.swift in Sources */,
 				83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */,
 				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,
+				31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */,
+				B60D80EB2B8DA1AA00236CC6 /* CustomGradientButton.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
 				83361EC72B8D0D770089B169 /* Content.swift in Sources */,
+				B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */,
 				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
+				B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */,
 				83361EC62B8D0D770089B169 /* Question.swift in Sources */,
-				939492F22B8BC7030019C9E5 /* AmountTableViewController.swift in Sources */,
+				939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */,
 				939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */,
 				83361EBF2B8D0D530089B169 /* MError.swift in Sources */,
 				939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */,
+				31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +527,26 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6B10ADE2B8CB01900CB3F23 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 6.0.0;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6B10ADF2B8CB01900CB3F23 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6B10ADE2B8CB01900CB3F23 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 939492BD2B8B6DE30019C9E5 /* Project object */;
 }
