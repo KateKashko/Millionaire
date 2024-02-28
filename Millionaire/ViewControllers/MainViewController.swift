@@ -48,9 +48,22 @@ final class MainViewController: UIViewController {
     
     //MARK: - Actions
     @objc func startGame() {
-        let gameVC = GameViewController()
-        gameVC.modalPresentationStyle = .fullScreen
-        present(gameVC, animated: true)
+        self.showLoadingView()
+        
+        NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let question):
+                DispatchQueue.main.async {
+                    self.dismissLoadingView()
+                    let gameVC = GameViewController(question: question)
+                    gameVC.modalPresentationStyle = .fullScreen
+                    self.present(gameVC, animated: true)
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
     }
     
     @objc func showRules() {
@@ -113,6 +126,7 @@ private extension MainViewController {
         ])
     }
 }
+
 
 ////MARK: - Preview
 //#Preview("MainViewController") {
