@@ -103,7 +103,7 @@ class GameViewController: UIViewController {
     }
     
     private func startTimer() {
-       let gameTimer = Timer.scheduledTimer(
+        gameTimer = Timer.scheduledTimer(
         timeInterval: 1.0,
         target: self,
         selector: #selector(updateTimer),
