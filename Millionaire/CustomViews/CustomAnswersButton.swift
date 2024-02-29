@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class CustomGradientButton: UIButton {
+class CustomAnswersButton: UIButton {
     
     private let prefixLabel = UILabel(text: "")
     private let answerLabel = UILabel(text: "")
@@ -22,8 +22,25 @@ class CustomGradientButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        applyGradient(LocalConstants.mainColors)
+        applyGradient(colors: LocalConstants.blueGradientColors)
     }
+    
+    // MARK: - Public methods and properties
+    func updateAnswer(with text: String) {
+        answerLabel.text = text
+    }
+    
+    
+    func addButtonTarget(target: Any?, action: Selector, tag: Int) {
+        addTarget(target, action: action, for: .touchUpInside)
+        self.tag = tag
+    }
+
+    
+    var answerTitle: String {
+        answerLabel.text ?? ""
+    }
+    
     
     // MARK: - Private methods
     private func setupButton(_ prefix: String, _ text: String) {
@@ -39,13 +56,14 @@ class CustomGradientButton: UIButton {
         
         addSubview(prefixLabel)
         addSubview(answerLabel)
+<<<<<<<< HEAD:Millionaire/CustomViews/CustomGradientButton.swift
         
 //        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)
     }
     
-    private func applyGradient(_ colors: [CGColor]) {
+    func applyGradient(_ colors: [CGColor]) {
         
         let gradient = CAGradientLayer()
         
@@ -67,10 +85,10 @@ class CustomGradientButton: UIButton {
 //        applyGradient(LocalConstants.touchDownColors)
 //        print("W")
 //    }
+========
+>>>>>>>> develop:Millionaire/CustomViews/CustomAnswersButton.swift
 
-     @objc private func buttonTouchUp() {
-         applyGradient(LocalConstants.mainColors)
-     }
+    }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
@@ -89,12 +107,32 @@ class CustomGradientButton: UIButton {
     // MARK: LocalConstants
     private enum LocalConstants {
         
-        static let mainButtonColor1 = UIColor(hex: "4872C4").cgColor
-        static let mainButtonColor2 = UIColor(hex: "203960").cgColor
-        static let mainButtonColor3 = UIColor(hex: "4872C4").cgColor
+        static let blueButtonColor1 = UIColor(named: "blueButton")!
+        static let blueButtonColor2 = UIColor(named: "blueButtonShadow")!
+        static let blueButtonColor3 = UIColor(named: "blueButton")!
         
-        static let mainColors = [mainButtonColor1, mainButtonColor2, mainButtonColor3]
+        static let blueGradientColors = [blueButtonColor1, blueButtonColor2, blueButtonColor3]
+        
+        static let redButtonColor1 = UIColor(named: "redButton")!
+        static let redButtonColor2 = UIColor(named: "redButtonShadow")!
+        static let redButtonColor3 = UIColor(named: "redButton")!
+        
+        static let redGradientColors = [redButtonColor1, redButtonColor2, redButtonColor3]
+        
+        static let goldButtonColor1 = UIColor(named: "goldButton")!
+        static let goldButtonColor2 = UIColor(named: "goldButtonShadow")!
+        static let goldButtonColor3 = UIColor(named: "goldButton")!
+        
+        static let goldGradientColors = [redButtonColor1, redButtonColor2, redButtonColor3]
+        
+        static let greenButtonColor1 = UIColor(named: "greenButton")!
+        static let greenButtonColor2 = UIColor(named: "greenButtonShadow")!
+        static let greenButtonColor3 = UIColor(named: "greenButton")!
+        
+        static let greenGradientColors = [redButtonColor1, redButtonColor2, redButtonColor3]
      }
+    
+    
 }
 
 

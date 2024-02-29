@@ -5,8 +5,21 @@ class GameViewController: UIViewController {
     
     // MARK: - Properties
     private var gameTimer: Timer?
-    
     private var remainingTime = LocalConstants.numberOfSeconds
+    
+    let question: Question
+    var allAnswers: [String] = []
+    var correctAnswer: String = ""
+    var incorrectAnswers: [String] = []
+    
+    init(question: Question) {
+        self.question = question
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - UI
     private lazy var backgroundImage: UIImageView = {
@@ -59,10 +72,10 @@ class GameViewController: UIViewController {
     private let questionLabel = UILabel (
         text: "Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese ")
     
-    private let buttonA = CustomGradientButton(prefix: "A", text: "First Option")
-    private let buttonB = CustomGradientButton(prefix: "B", text: "SecondOlet")
-    private let buttonC = CustomGradientButton(prefix: "C", text: "Third Option")
-    private let buttonD = CustomGradientButton(prefix: "D", text: "Other Option")
+    private let buttonA = CustomAnswersButton(prefix: "A", text: "First Option")
+    private let buttonB = CustomAnswersButton(prefix: "B", text: "SecondOlet")
+    private let buttonC = CustomAnswersButton(prefix: "C", text: "Third Option")
+    private let buttonD = CustomAnswersButton(prefix: "D", text: "Other Option")
     
     private let fiftyFiftyButton = UIButton()
     private let friendCallButton = UIButton()
@@ -88,10 +101,50 @@ class GameViewController: UIViewController {
         setupView()
         setupActions()
         setupConstraints()
+        SoundManager.shared.playSound(LocalConstants.waitForResponseSound)
         startTimer()
-    
+        setupValuesForAnswers()
+        addButtonsTargets()
+        updateUI()
     }
 
+    
+    private func setupValuesForAnswers() {
+        correctAnswer    = question.results[0].correctAnswer
+        incorrectAnswers = question.results[0].incorrectAnswers
+        allAnswers.append(correctAnswer)
+        allAnswers.append(contentsOf: incorrectAnswers)
+        allAnswers.shuffle()
+    }
+    
+    
+    private func updateUI() {
+        questionLabel.text = question.results[0].question.htmlDecoded
+        
+        buttonA.updateAnswer(with: allAnswers[1].htmlDecoded)
+        buttonB.updateAnswer(with: allAnswers[0].htmlDecoded)
+        buttonC.updateAnswer(with: allAnswers[3].htmlDecoded)
+        buttonD.updateAnswer(with: allAnswers[2].htmlDecoded)
+    }
+    
+    
+    private func addButtonsTargets() {
+        buttonA.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 0)
+        buttonB.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 1)
+        buttonC.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 2)
+        buttonD.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 3)
+    }
+    
+    
+    @objc private func checkAnswer(sender: CustomAnswersButton) {
+        if sender.answerTitle == self.correctAnswer {
+            print("Correct!")
+        } else {
+            print("Incorrect!")
+        }
+    }
+    
+    
     // MARK: - Private methods
     private func setupActions() {
 
@@ -99,11 +152,11 @@ class GameViewController: UIViewController {
         friendCallButton.addTarget(self, action: #selector(friendCallTapped), for: .touchUpInside)
         audienceAssistantButton.addTarget(self, action: #selector(audienceAssistantTapped), for: .touchUpInside)
         
-//        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
+        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
     }
     
     private func startTimer() {
-       let gameTimer = Timer.scheduledTimer(
+        gameTimer = Timer.scheduledTimer(
         timeInterval: 1.0,
         target: self,
         selector: #selector(updateTimer),
@@ -128,6 +181,14 @@ class GameViewController: UIViewController {
     @objc private func audienceAssistantTapped() {
         audienceAssistantImageView.image = LocalConstants.audienceHelpUsedImage
     }
+    
+    @objc private func takeMoneyTapped() {
+        SoundManager.shared.playSound(LocalConstants.victoryMillion)
+        
+        goToResultViewController()
+    }
+
+    
     @objc private func updateTimer(){
         
         remainingTime -= 1
@@ -199,6 +260,9 @@ extension GameViewController {
         audienceAssistantButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        takeMoneyButton.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
@@ -214,4 +278,6 @@ private enum LocalConstants {
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
     static let takeMoneyImage = UIImage(named: "monetization_on")
     static let numberOfSeconds = 30
+    static let waitForResponseSound = "waitForResponse"
+    static let victoryMillion = "victoryMillion"
  }

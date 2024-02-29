@@ -8,9 +8,9 @@
 import Foundation
 
 enum QuestionLevelURL: String {
-    case easy   = "https://opentdb.com/api.php?amount=1&difficulty=easy"
-    case medium = "https://opentdb.com/api.php?amount=1&difficulty=medium"
-    case hard   = "https://opentdb.com/api.php?amount=1&difficulty=hard"
+    case easy
+    case medium
+    case hard   
 }
 
 class NetworkManager {
@@ -20,7 +20,7 @@ class NetworkManager {
     private init() {}
     
     func getQuestion(for level: QuestionLevelURL, completed: @escaping (Result<Question, MError>) -> Void) {
-        let endpoint = level.rawValue
+        let endpoint = "https://opentdb.com/api.php?amount=1&difficulty=\(level)&type=multiple"
         
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidURL))
