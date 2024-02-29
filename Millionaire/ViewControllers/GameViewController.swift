@@ -49,12 +49,7 @@ class GameViewController: UIViewController {
     private let prizeMoney = UILabel(
         text: "100 RUB"
     )
-    
-    private lazy var timerLabel = UILabel(
-        text: "\(remainingTime)",
-        font: .systemFont(ofSize: 64, weight: .medium)
-    )
-    
+        
     private let questionLabel = UILabel (
         text: "Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese ")
     
@@ -81,9 +76,15 @@ class GameViewController: UIViewController {
         withImage: LocalConstants.takeMoneyImage
     )
     
+    private lazy var timerLabel = UILabel(
+        text: "\(remainingTime)",
+        font: .systemFont(ofSize: 64, weight: .medium)
+    )
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupView()
         setupActions()
         setupConstraints()
@@ -96,11 +97,27 @@ class GameViewController: UIViewController {
     // MARK: - Private methods
     private func setupActions() {
 
-        fiftyFiftyButton.addTarget(self, action: #selector(fiftyFiftyTapped), for: .touchUpInside)
-        friendCallButton.addTarget(self, action: #selector(friendCallTapped), for: .touchUpInside)
-        audienceAssistantButton.addTarget(self, action: #selector(audienceAssistantTapped), for: .touchUpInside)
+        fiftyFiftyButton.addTarget(
+            self,
+            action: #selector(fiftyFiftyTapped),
+            for: .touchUpInside
+        )
+        friendCallButton.addTarget(
+            self,
+            action: #selector(friendCallTapped),
+            for: .touchUpInside
+        )
+        audienceAssistantButton.addTarget(
+            self,
+            action: #selector(audienceAssistantTapped),
+            for: .touchUpInside
+        )
         
-        takeMoneyButton.addTarget(self, action: #selector(takeMoneyTapped), for: .touchUpInside)
+        takeMoneyButton.addTarget(
+            self,
+            action: #selector(takeMoneyTapped),
+            for: .touchUpInside
+        )
     }
     
     private func startTimer() {
@@ -120,19 +137,23 @@ class GameViewController: UIViewController {
     
     // MARK: - Objc methods
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
+        
         fiftyFiftyImageView.image = LocalConstants.fiftyFiftyUsedImage
     }
+    
     @objc private func friendCallTapped() {
+        
         friendCallImageView.image = LocalConstants.friendCallUsedImage
     }
     
     @objc private func audienceAssistantTapped() {
+        
         audienceAssistantImageView.image = LocalConstants.audienceHelpUsedImage
     }
     
     @objc private func takeMoneyTapped() {
-        SoundManager.shared.playSound(LocalConstants.victoryMillion)
         
+        SoundManager.shared.playSound(LocalConstants.victoryMillionSound)
         goToResultViewController()
     }
 
@@ -218,14 +239,19 @@ extension GameViewController {
 private enum LocalConstants {
     
     static let mainBGImage = UIImage(named: "mainBG")
+    
     static let fiftyFiftyImage = UIImage(named: "5050")
     static let friendCallImage = UIImage(named: "callToFriend")
     static let audienceHelpImage = UIImage(named: "help")
+    
     static let fiftyFiftyUsedImage = UIImage(named: "5050Used")
     static let friendCallUsedImage = UIImage(named: "callToFriendUsed")
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
+    
     static let takeMoneyImage = UIImage(named: "monetization_on")
+    
     static let numberOfSeconds = 30
+    
     static let waitForResponseSound = "waitForResponse"
-    static let victoryMillion = "victoryMillion"
+    static let victoryMillionSound = "victoryMillion"
  }
