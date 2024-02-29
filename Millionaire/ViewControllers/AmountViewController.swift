@@ -47,7 +47,8 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
             contentView.topAnchor.constraint(equalTo: scrollview.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollview.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollview.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollview.bottomAnchor)
+            contentView.bottomAnchor.constraint(equalTo: scrollview.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollview.widthAnchor)
         ])
     }
     
@@ -78,9 +79,8 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableView.widthAnchor.constraint(equalToConstant: 350)
+                tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
         
         tableView.register(CustomAwardCell.self, forCellReuseIdentifier: "customCell")
@@ -144,11 +144,11 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         cell.setupCell()
         let amount = sumOfAward.sumOfAward[indexPath.row]
         cell.configure(with: amount)
-        let gradientLayer = cell.getColorOfLabel(colorType: amount)
-        cell.layer.insertSublayer(gradientLayer, at: 0)
-        gradientLayer.frame = cell.bounds
+        
+        
+        
         cell.layer.cornerRadius = 20
-        gradientLayer.cornerRadius = 20
+        
         return cell
     }
 }

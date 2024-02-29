@@ -147,21 +147,26 @@ class GameViewController: UIViewController {
         if sender.answerTitle == self.correctAnswer {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
+                
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
+                
                 self.goToAmountViewController()
             }
             
         } else {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
                 sender.currentGradientColors = UIGradientColors.redGradientColors
+                
                 SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
-                self.goToResultViewController()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.goToResultViewController() }
             }
         }
     }
-    
     
     // MARK: - Private methods
     private func setupActions() {
@@ -277,9 +282,11 @@ class GameViewController: UIViewController {
 extension GameViewController {
     
     private func setupConstraints() {
+        
         backgroundImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         mainStackView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide).inset(15)
         }
@@ -288,10 +295,6 @@ extension GameViewController {
         }
         answersStackView.snp.makeConstraints { make in
             make.width.equalTo(350)
-        }
-        
-        takeMoneyImageView.snp.makeConstraints { make in
-            make.height.equalTo(45)
         }
         
         fiftyFiftyButton.snp.makeConstraints { make in
@@ -303,6 +306,11 @@ extension GameViewController {
         audienceAssistantButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        takeMoneyImageView.snp.makeConstraints { make in
+            make.height.equalTo(45)
+        }
+        
         takeMoneyButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
