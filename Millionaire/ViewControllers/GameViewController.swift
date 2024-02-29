@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     var correctAnswer: String = ""
     var incorrectAnswers: [String] = []
     
+    // MARK: - Init
     init(question: Question) {
         self.question = question
         super.init(nibName: nil, bundle: nil)
@@ -65,12 +66,12 @@ class GameViewController: UIViewController {
     )
         
     private let questionLabel = UILabel (
-        text: "Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese painting technique is...Traditonal Chinese ")
+        text: "")
     
-    private let buttonA = CustomAnswersButton(prefix: "A", text: "First Option")
-    private let buttonB = CustomAnswersButton(prefix: "B", text: "SecondOlet")
-    private let buttonC = CustomAnswersButton(prefix: "C", text: "Third Option")
-    private let buttonD = CustomAnswersButton(prefix: "D", text: "Other Option")
+    private let buttonA = CustomAnswersButton(prefix: "A", text: "")
+    private let buttonB = CustomAnswersButton(prefix: "B", text: "")
+    private let buttonC = CustomAnswersButton(prefix: "C", text: "")
+    private let buttonD = CustomAnswersButton(prefix: "D", text: "")
     
     private let fiftyFiftyButton = UIButton()
     private let friendCallButton = UIButton()
@@ -138,10 +139,26 @@ class GameViewController: UIViewController {
     
     
     @objc private func checkAnswer(sender: CustomAnswersButton) {
+       
+        sender.currentGradientColors = UIGradientColors.goldGradientColors
+        SoundManager.shared.playSound(LocalConstants.waitForInspectionSound)
+        gameTimer?.invalidate()
+        
         if sender.answerTitle == self.correctAnswer {
-            print("Correct!")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                sender.currentGradientColors = UIGradientColors.greenGradientColors
+                SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
+                self.goToAmountViewController()
+            }
+            
         } else {
-            print("Incorrect!")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                sender.currentGradientColors = UIGradientColors.redGradientColors
+                SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
+                self.goToResultViewController()
+            }
         }
     }
     
@@ -181,9 +198,14 @@ class GameViewController: UIViewController {
         repeats: true
        )
     }
-    
+    // MARK: - Navigation
     private func goToResultViewController() {
         let resultVC = ResultViewController()
+        self.present(resultVC, animated: true, completion: nil)
+    }
+    
+    private func goToAmountViewController() {
+        let resultVC = AmountViewController()
         self.present(resultVC, animated: true, completion: nil)
     }
     
@@ -306,4 +328,7 @@ private enum LocalConstants {
     
     static let waitForResponseSound = "waitForResponse"
     static let victoryMillionSound = "victoryMillion"
+    static let waitForInspectionSound = "waitForInspection"
+    static let correctAnswerSound = "correctAnswer"
+    static let wrongAnswerSound = "wrongAnswer"
  }
