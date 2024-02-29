@@ -16,33 +16,54 @@ final class MainViewController: UIViewController {
     private var millionaireImageView = UIImageView()
     private let millionaireImage = UIImage(named: "image")
     
-    private let startGameButton = UIButton()
-    private let gameRulesButton = UIButton()
+    private let startGameButton = UIButton(title: "Начать игру")
+    private let gameRulesButton = UIButton(title: "Правила игры")
     
-    //MARK: - Override Methods
-    
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackgroundImage()
-        
         setupMillionaireImage()
         
-        setupButton(startGameButton, withTitle: "Начать игру")
-        setupButton(gameRulesButton, withTitle: "Правила игры")
-        
+        addSubview()
         setupLayout()
-        
         addAction()
         
         SoundManager.shared.playSound("startApp")
     }
     
+    override func viewDidLayoutSubviews() {
+        self.startGameButton.applyGradient(colors: [
+            UIColor(named: "greenButton") ?? .clear,
+            UIColor(named: "greenButtonShadow") ?? .clear,
+            UIColor(named: "greenButton") ?? .clear
+        ])
+        self.gameRulesButton.applyGradient(colors: [
+            UIColor(named: "greenButton") ?? .clear,
+            UIColor(named: "greenButtonShadow") ?? .clear,
+            UIColor(named: "greenButton") ?? .clear
+        ])
+    }
+    
     //MARK: - Actions
     @objc func startGame() {
-        let gameVC = GameViewController()
-        gameVC.modalPresentationStyle = .fullScreen
-        present(gameVC, animated: true)
+        self.showLoadingView()
+        
+        NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let question):
+                DispatchQueue.main.async {
+                    self.dismissLoadingView()
+                    let gameVC = GameViewController(question: question)
+                    gameVC.modalPresentationStyle = .fullScreen
+                    self.present(gameVC, animated: true)
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
     }
     
     @objc func showRules() {
@@ -58,23 +79,17 @@ private extension MainViewController {
     func setupBackgroundImage() {
         backgroundImage.image = UIImage(named: "mainBG")
         backgroundImage.contentMode = .scaleAspectFill
-        view.addSubview(backgroundImage)
     }
     
     func setupMillionaireImage() {
         millionaireImageView.image = millionaireImage
-        view.addSubview(millionaireImageView)
     }
     
-    func setupButton(_ button: UIButton, withTitle title: String) {
-        button.setTitle(title, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.backgroundColor = .systemGreen
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
-        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        view.addSubview(button)
+    func addSubview() {
+        view.addSubview(backgroundImage)
+        view.addSubview(millionaireImageView)
+        view.addSubview(startGameButton)
+        view.addSubview(gameRulesButton)
     }
     
     func addAction() {
@@ -111,6 +126,7 @@ private extension MainViewController {
         ])
     }
 }
+
 
 ////MARK: - Preview
 //#Preview("MainViewController") {

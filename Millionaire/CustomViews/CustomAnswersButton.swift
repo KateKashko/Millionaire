@@ -25,6 +25,23 @@ class CustomAnswersButton: UIButton {
         applyGradient(colors: LocalConstants.blueGradientColors)
     }
     
+    // MARK: - Public methods and properties
+    func updateAnswer(with text: String) {
+        answerLabel.text = text
+    }
+    
+    
+    func addButtonTarget(target: Any?, action: Selector, tag: Int) {
+        addTarget(target, action: action, for: .touchUpInside)
+        self.tag = tag
+    }
+
+    
+    var answerTitle: String {
+        answerLabel.text ?? ""
+    }
+    
+    
     // MARK: - Private methods
     private func setupButton(_ prefix: String, _ text: String) {
         
@@ -39,6 +56,37 @@ class CustomAnswersButton: UIButton {
         
         addSubview(prefixLabel)
         addSubview(answerLabel)
+<<<<<<<< HEAD:Millionaire/CustomViews/CustomGradientButton.swift
+        
+//        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)
+    }
+    
+    func applyGradient(_ colors: [CGColor]) {
+        
+        let gradient = CAGradientLayer()
+        
+        gradient.colors = colors
+        gradient.locations = [0, 0.5, 1]
+        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
+        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
+        gradient.transform = CATransform3DMakeAffineTransform(
+            CGAffineTransform(a: 0, b: -1, c: 1, d: 0, tx: 0, ty: 1)
+        )
+        gradient.frame = self.bounds
+        gradient.cornerRadius = 15
+        
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    // MARK: - Objc methods
+//    @objc private func buttonTouchDown() {
+//        applyGradient(LocalConstants.touchDownColors)
+//        print("W")
+//    }
+========
+>>>>>>>> develop:Millionaire/CustomViews/CustomAnswersButton.swift
 
     }
     

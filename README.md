@@ -1,5 +1,6 @@
 ## Game "Who Wants to Be a Millionaire"
-#### Team project for the first challenge at the “Swift Marathon”
+#### First team challenge at the DevRush “Swift Marathon 11”
+**Contributors:** [KateKashko](https://github.com/KateKashko) , [DaniilMurzin](https://github.com/DaniilMurzin) , [PavelShir](https://github.com/PavelShir) , [MikhailUstyantsev](https://github.com/MikhailUstyantsev) , [vsvami](https://github.com/vsvami) , [captrus](https://github.com/captrus)
 
 ### Stack: UIKit / MVC / SnapKit / API
 

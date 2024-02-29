@@ -7,6 +7,20 @@ class GameViewController: UIViewController {
     private var gameTimer: Timer?
     private var remainingTime = LocalConstants.numberOfSeconds
     
+    let question: Question
+    var allAnswers: [String] = []
+    var correctAnswer: String = ""
+    var incorrectAnswers: [String] = []
+    
+    init(question: Question) {
+        self.question = question
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - UI
     private lazy var backgroundImage: UIImageView = {
         let element = UIImageView()
@@ -90,10 +104,48 @@ class GameViewController: UIViewController {
         setupConstraints()
         SoundManager.shared.playSound(LocalConstants.waitForResponseSound)
         startTimer()
-        
-        
+        setupValuesForAnswers()
+        addButtonsTargets()
+        updateUI()
     }
 
+    
+    private func setupValuesForAnswers() {
+        correctAnswer    = question.results[0].correctAnswer
+        incorrectAnswers = question.results[0].incorrectAnswers
+        allAnswers.append(correctAnswer)
+        allAnswers.append(contentsOf: incorrectAnswers)
+        allAnswers.shuffle()
+    }
+    
+    
+    private func updateUI() {
+        questionLabel.text = question.results[0].question.htmlDecoded
+        
+        buttonA.updateAnswer(with: allAnswers[1].htmlDecoded)
+        buttonB.updateAnswer(with: allAnswers[0].htmlDecoded)
+        buttonC.updateAnswer(with: allAnswers[3].htmlDecoded)
+        buttonD.updateAnswer(with: allAnswers[2].htmlDecoded)
+    }
+    
+    
+    private func addButtonsTargets() {
+        buttonA.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 0)
+        buttonB.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 1)
+        buttonC.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 2)
+        buttonD.addButtonTarget(target: self, action: #selector(checkAnswer), tag: 3)
+    }
+    
+    
+    @objc private func checkAnswer(sender: CustomAnswersButton) {
+        if sender.answerTitle == self.correctAnswer {
+            print("Correct!")
+        } else {
+            print("Incorrect!")
+        }
+    }
+    
+    
     // MARK: - Private methods
     private func setupActions() {
 
