@@ -11,6 +11,7 @@ class GameViewController: UIViewController {
     var allAnswers: [String] = []
     var correctAnswer: String = ""
     var incorrectAnswers: [String] = []
+    var currentQuestionIndex: Int = 1
     
     // MARK: - Init
     init(question: Question) {
@@ -149,7 +150,7 @@ class GameViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
-                self.goToAmountViewController()
+                self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
             }
             
         } else {
@@ -204,9 +205,13 @@ class GameViewController: UIViewController {
         self.present(resultVC, animated: true, completion: nil)
     }
     
-    private func goToAmountViewController() {
+    private func goToAmountViewController(withQuestionIndex questionIndex: Int) {
         let resultVC = AmountViewController()
+        resultVC.previousQuestionIndex = currentQuestionIndex
         self.present(resultVC, animated: true, completion: nil)
+        resultVC.onDismiss = { [weak self] updatedIndex in
+            self?.currentQuestionIndex = updatedIndex
+        }
     }
     
     // MARK: - Objc methods
