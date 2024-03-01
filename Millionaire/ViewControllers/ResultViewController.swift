@@ -171,7 +171,12 @@ extension ResultViewController {
             playAgainButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             playAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playAgainButton.widthAnchor.constraint(equalToConstant: 264),
-            playAgainButton.heightAnchor.constraint(equalToConstant: 54)
+            playAgainButton.heightAnchor.constraint(equalToConstant: 54),
+            
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            closeButton.widthAnchor.constraint(equalToConstant: 30),
+            closeButton.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }
