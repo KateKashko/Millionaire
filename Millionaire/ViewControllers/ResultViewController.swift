@@ -29,11 +29,16 @@ final class ResultViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    func setWinningAmount(_ amount: Int) {
+        winningAmount = amount
+        updateWinningAmountLabel()
+    }
+    
     private func updateWinningAmountLabel() {
         if let winningAmount = winningAmount {
-            winningAmountLabel.text = "\(winningAmount)＄"
+            winningAmountLabel.text = "\(winningAmount) P"
         } else {
-            winningAmountLabel.text = "No data"
+            winningAmountLabel.text = "0 рубликов, 0"
         }
     }
 }
