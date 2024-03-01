@@ -10,7 +10,7 @@ import UIKit
 final class ResultViewController: UIViewController {
     
     // MARK: - Properties
-    var winningAmount: Int?
+    private var winningAmount: Int?
     
     // MARK: - Views
     private let backgroundImage = UIImageView()
@@ -18,6 +18,7 @@ final class ResultViewController: UIViewController {
     private let winAmountTextField = UITextField()
     private let winningAmountLabel = UILabel()
     private let playAgainButton = UIButton()
+    private let closeButton = UIButton(type: .custom)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -61,6 +62,7 @@ extension ResultViewController {
         setupWinAmountTextField()
         setupWinAmountLabel()
         setupPlayAgainButton()
+        setupCloseButton()
     }
     
     private func setupBackgroundImageView() {
@@ -80,7 +82,7 @@ extension ResultViewController {
     private func setupWinAmountTextField() {
         view.addSubview(winAmountTextField)
         winAmountTextField.translatesAutoresizingMaskIntoConstraints = false
-        winAmountTextField.text = "Ваш выигрыш:" // или -You won:
+        winAmountTextField.text = "Ваш выигрыш:"
         winAmountTextField.isUserInteractionEnabled = false
         winAmountTextField.font = UIFont.systemFont(ofSize: 40, weight: .medium)
         winAmountTextField.textColor = .white
@@ -107,10 +109,42 @@ extension ResultViewController {
         playAgainButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
     }
     
+    private func setupCloseButton() {
+        view.addSubview(closeButton)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30)
+        let closeImage = UIImage(systemName: "gobackward", withConfiguration: symbolConfiguration)
+        
+        closeButton.setImage(closeImage, for: .normal)
+        closeButton.tintColor = .white
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+    }
+    
     // MARK: - Actions
     @objc private func newGameButtonTapped() {
-        navigationController?.popToRootViewController(animated: true)
+        let mainVC = MainViewController()
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .coverVertical
+        self.present(mainVC, animated: true)
     }
+    // Close Button Action
+    @objc private func closeButtonTapped() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let sceneDelegate = windowScene.delegate as? SceneDelegate else {
+                  dismiss(animated: true, completion: nil)
+                  return
+            }
+                  let mainVC = MainViewController()
+                  mainVC.modalPresentationStyle = .fullScreen
+                  mainVC.modalTransitionStyle = .crossDissolve
+            
+                  if let rootViewController = sceneDelegate.window?.rootViewController {
+                  rootViewController.dismiss(animated: true) {
+                  rootViewController.present(mainVC, animated: true, completion: nil)
+                }
+            }
+        }
     
     // MARK: - Constraints
     private func setupConstraints() {
