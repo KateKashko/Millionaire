@@ -24,8 +24,17 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         return button
     }()
     let sumOfAward = SumOfAward()
-    var previousQuestionIndex: Int = 1
-    var onDismiss: ((Int) -> Void)?
+    var currentQuestionIndex = 0
+    var gameVC: GameViewController?
+    
+    init(currentQuestionIndex: Int) {
+            super.init(nibName: nil, bundle: nil)
+            self.currentQuestionIndex = currentQuestionIndex
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +92,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     @objc func continueGame() {
         self.showLoadingView()
         
-        if previousQuestionIndex < 15 {
+        if currentQuestionIndex < 15 {
             NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
@@ -91,8 +100,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
                     DispatchQueue.main.async {
                         self.dismissLoadingView()
                         let gameVC = GameViewController(question: question)
-                        let updatedIndex = self.previousQuestionIndex + 1
-                        self.onDismiss?(updatedIndex)
+                        gameVC.currentQuestionIndex = self.saveGameProgress(questionIndex: self.currentQuestionIndex)
                         gameVC.modalPresentationStyle = .fullScreen
                         self.present(gameVC, animated: true)
                     }
@@ -135,7 +143,7 @@ extension AmountViewController {
         gradientLayer.frame = viewbounds
 
         switch index.num {
-        case previousQuestionIndex:
+        case currentQuestionIndex:
             let colorTop = UIColor(red: 139.0/255.0, green: 236.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
             let colorMiddle = UIColor(red: 65.0/255.0, green: 179.0/255.0, blue: 70.0/255.0, alpha: 1.0).cgColor
             let colorBottom = UIColor(red: 139.0/255.0, green: 236.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
@@ -160,5 +168,11 @@ extension AmountViewController {
     }
 }
 
+extension AmountViewController: AmountVCDelegate {
+    func saveGameProgress(questionIndex: Int) -> Int {
+        currentQuestionIndex = questionIndex + 1
+        return questionIndex
+    }
+}
 
 

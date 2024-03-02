@@ -14,19 +14,9 @@ class CustomAwardCell: UITableViewCell {
     let rightLabel = UILabel()
     var boundsDidChanged: ((CGRect) -> Void)?
     
-    /*override var bounds: CGRect {
-        didSet {
-            print("contentView.bounds = \(bounds)")
-            boundsDidChanged?(self.bounds)
-        }
-    }
-    */
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         boundsDidChanged?(self.bounds)
-        print("contentView.bounds = \(bounds)")
-        
     }
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -61,8 +51,8 @@ class CustomAwardCell: UITableViewCell {
     
         // Метод для установки данных в ячейку
     func configure(with award: Amount) {
-        leftLabel.text = "Вопрос: \(award.num)"
-        rightLabel.text = "\(award.award)"
+        leftLabel.text = "Вопрос \(award.num)"
+        rightLabel.text = "\(award.award) Рублей"
         }
     }
 

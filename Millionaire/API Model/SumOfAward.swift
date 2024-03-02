@@ -26,7 +26,7 @@ struct SumOfAward {
         Amount(num: 4, award: 500, canTake: false),
         Amount(num: 3, award: 300, canTake: false),
         Amount(num: 2, award: 200, canTake: false),
-        Amount(num: 1, award: 100, canTake: false),
+        Amount(num: 1, award: 100, canTake: false)
     ]
     
     mutating func checkRawNumber() -> Int {
