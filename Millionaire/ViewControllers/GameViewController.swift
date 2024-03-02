@@ -1,17 +1,12 @@
 import UIKit
 import SnapKit
 
-protocol AmountVCDelegate: AnyObject {
-    func saveGameProgress(questionIndex: Int) -> Int
-}
 
 class GameViewController: UIViewController {
     
     // MARK: - Properties
     private var gameTimer: Timer?
     private var remainingTime = LocalConstants.numberOfSeconds
-    
-    weak var delegate: AmountVCDelegate?
     
     let question: Question
     var allAnswers: [String] = []
@@ -65,8 +60,8 @@ class GameViewController: UIViewController {
         distribution: .fillEqually
     )
     
-    private let questionNumber = UILabel(
-        text: "Вопрос 1"
+    private lazy var questionNumber = UILabel(
+        text: "Вопрос \(currentQuestionIndex + 1)"
     )
     
     private let prizeMoney = UILabel(
@@ -125,6 +120,7 @@ class GameViewController: UIViewController {
         allAnswers.append(correctAnswer)
         allAnswers.append(contentsOf: incorrectAnswers)
         allAnswers.shuffle()
+        print(correctAnswer)
     }
     
     

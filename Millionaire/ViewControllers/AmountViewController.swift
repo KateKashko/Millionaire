@@ -43,8 +43,6 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         setupBackground()
         setupTableView()
         setupLayout()
-        
-     //   SoundManager.shared.playSound("correctAnswer")
     }
 
     
@@ -72,27 +70,23 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func setupBackground() {
-        
         backGround.image = UIImage(named: "mainBG")
         backGround.contentMode = .scaleAspectFill
-        
     }
     
     func setupTableView() {
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
-        //tableView.allowsSelection = false
         tableView.isScrollEnabled = false
-        
         tableView.register(CustomAwardCell.self, forCellReuseIdentifier: "customCell")
+        print(currentQuestionIndex)
     }
     
     
     @objc func continueGame() {
         self.showLoadingView()
-        
+
         if currentQuestionIndex < 15 {
             NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
                 guard let self = self else { return }
@@ -107,11 +101,39 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
                 case .failure(let error):
                     print(error.rawValue)
                 }
-            }
-        } else {
-            print("вы выйграли")
+                                                           
+        switch currentQuestionIndex {
+        case 0...4: getQuestion(difficulty: .easy)
+        case 5...9: getQuestion(difficulty: .medium)
+        case 10...14: getQuestion(difficulty: .hard)
+        default: print("Вы выиграли 1 млн руб!")
         }
     }
+    
+    
+    private func showGameViewController(with question: Question) {
+        DispatchQueue.main.async {
+            self.dismissLoadingView()
+            let gameVC = GameViewController(question: question)
+            gameVC.currentQuestionIndex = self.currentQuestionIndex
+            gameVC.modalPresentationStyle = .fullScreen
+            self.present(gameVC, animated: true)
+        }
+    }
+    
+    
+    private func getQuestion(difficuly level: QuestionLevelURL) {
+        NetworkManager.shared.getQuestion(for: level) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let question):
+                self.showGameViewController(with: question)
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
+    
     
     // MARK: - Table view data source
     
@@ -127,7 +149,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.boundsDidChanged = { [weak self] bounds in
             guard let self = self else { return }
-            let gradientLayer = getColorOfLabel(index: amount, viewbounds: bounds)
+            let gradientLayer = self.getColorOfLabel(index: amount, viewbounds: bounds)
             cell.layer.insertSublayer(gradientLayer, at: 0)
             gradientLayer.cornerRadius = 20
         }
@@ -168,11 +190,5 @@ extension AmountViewController {
     }
 }
 
-extension AmountViewController: AmountVCDelegate {
-    func saveGameProgress(questionIndex: Int) -> Int {
-        currentQuestionIndex = questionIndex + 1
-        return questionIndex
-    }
-}
 
 
