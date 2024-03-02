@@ -8,20 +8,22 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-    //    window = UIWindow(windowScene: windowScene)
-    //    window?.rootViewController = MainViewController()
-    //    window?.makeKeyAndVisible()
+        window = UIWindow(windowScene: windowScene)
+        let viewController = MainViewController()
         
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = MainViewController()
-        window.makeKeyAndVisible()
-        self.window = window
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = true
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 }
 

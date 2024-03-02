@@ -107,7 +107,7 @@ class GameViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.isHidden = true
         setupView()
         setupActions()
         setupConstraints()
@@ -217,15 +217,13 @@ class GameViewController: UIViewController {
     // MARK: - Navigation
     private func goToResultViewController() {
         let resultVC = ResultViewController()
-        self.present(resultVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(resultVC, animated: true)
     }
     
     private func goToAmountViewController(withQuestionIndex questionIndex: Int) {
         let resultVC = AmountViewController(currentQuestionIndex: questionIndex)
-        resultVC.currentQuestionIndex = questionIndex
-        resultVC.modalPresentationStyle = .fullScreen
-        self.present(resultVC, animated: true, completion: nil)
-        
+        self.navigationController?.pushViewController(resultVC, animated: true)
+        self.navigationItem.hidesBackButton = true
     }
     
     // MARK: - Objc methods
