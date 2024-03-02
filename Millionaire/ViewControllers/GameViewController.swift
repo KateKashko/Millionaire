@@ -11,6 +11,7 @@ class GameViewController: UIViewController {
     var allAnswers: [String] = []
     var correctAnswer: String = ""
     var incorrectAnswers: [String] = []
+    var currentQuestionIndex: Int = 1
     
     // MARK: - Init
     init(question: Question) {
@@ -140,16 +141,22 @@ class GameViewController: UIViewController {
     
     @objc private func checkAnswer(sender: CustomAnswersButton) {
        
+        [buttonA, buttonB, buttonC, buttonD].forEach {
+            $0.isEnabled = false
+        }
+        
         sender.currentGradientColors = UIGradientColors.goldGradientColors
         SoundManager.shared.playSound(LocalConstants.waitForInspectionSound)
         gameTimer?.invalidate()
         
-        if sender.answerTitle == self.correctAnswer {
+        if sender.answerTitle.compare(self.correctAnswer, options: .diacriticInsensitive) == .orderedSame {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
-                self.goToAmountViewController()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
+                }
             }
             
         } else {
@@ -157,7 +164,9 @@ class GameViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.redGradientColors
                 SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
-                self.goToResultViewController()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.goToResultViewController()
+                }
             }
         }
     }
@@ -204,9 +213,13 @@ class GameViewController: UIViewController {
         self.present(resultVC, animated: true, completion: nil)
     }
     
-    private func goToAmountViewController() {
+    private func goToAmountViewController(withQuestionIndex questionIndex: Int) {
         let resultVC = AmountViewController()
+        resultVC.previousQuestionIndex = currentQuestionIndex
         self.present(resultVC, animated: true, completion: nil)
+        resultVC.onDismiss = { [weak self] updatedIndex in
+            self?.currentQuestionIndex = updatedIndex
+        }
     }
     
     // MARK: - Objc methods
