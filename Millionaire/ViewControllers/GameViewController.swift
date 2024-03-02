@@ -141,24 +141,30 @@ class GameViewController: UIViewController {
     
     @objc private func checkAnswer(sender: CustomAnswersButton) {
        
+        [buttonA, buttonB, buttonC, buttonD].forEach {
+            $0.isEnabled = false
+        }
+        
         sender.currentGradientColors = UIGradientColors.goldGradientColors
         SoundManager.shared.playSound(LocalConstants.waitForInspectionSound)
         gameTimer?.invalidate()
         
-        if sender.answerTitle == self.correctAnswer {
+        if sender.answerTitle.compare(self.correctAnswer, options: .diacriticInsensitive) == .orderedSame {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
-                self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
-            }
-            
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
+                }
         } else {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.redGradientColors
                 SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
-                self.goToResultViewController()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.goToResultViewController()
+                }
             }
         }
     }

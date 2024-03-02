@@ -28,15 +28,17 @@ final class ResultViewController: UIViewController {
         setupConstraints()
         updateWinningAmountLabel()
     }
-    
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        backgroundImage.alpha = 0.0
-        
-        UIView.animate(withDuration: 3) {
-            self.backgroundImage.alpha = 1.0
-        }
-    }
+   
+  
+//    override func viewIsAppearing(_ animated: Bool) {
+//        super.viewIsAppearing(animated)
+//        backgroundImage.alpha = 0.0
+//        
+//        UIView.animate(withDuration: 3) {
+//            self.backgroundImage.alpha = 1.0
+//        }
+//    }
+
     
     // MARK: - Private Methods
     func setWinningAmount(_ amount: Int) {
