@@ -6,37 +6,58 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomAwardCell: UITableViewCell {
     
-        let leftLabel = UILabel()
-        let rightLabel = UILabel()
-        
-        func setupCell() {
-            
-            self.leftLabel.textColor = .white
-            self.rightLabel.textColor = .white
-            
-            self.backgroundColor = UIColor.clear
-            
-            leftLabel.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(leftLabel)
-            NSLayoutConstraint.activate([
-                leftLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-                leftLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            ])
-
-            rightLabel.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(rightLabel)
-            NSLayoutConstraint.activate([
-                rightLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-                rightLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            ])
-            
-            NSLayoutConstraint.activate([
-                contentView.heightAnchor.constraint(equalToConstant: 50) 
-            ])
+    let leftLabel = UILabel()
+    let rightLabel = UILabel()
+    var boundsDidChanged: ((CGRect) -> Void)?
+    
+    /*override var bounds: CGRect {
+        didSet {
+            print("contentView.bounds = \(bounds)")
+            boundsDidChanged?(self.bounds)
         }
+    }
+    */
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        boundsDidChanged?(self.bounds)
+        print("contentView.bounds = \(bounds)")
+        
+    }
+        
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        self.leftLabel.textColor = .white
+        self.rightLabel.textColor = .white
+        contentView.contentMode = .scaleAspectFill
+        self.backgroundColor = UIColor.clear
+        self.layer.borderColor = .init(gray: 255, alpha: 1)
+        self.layer.borderWidth = 2
+        self.layer.cornerRadius = 20
+        
+        contentView.addSubview(leftLabel)
+        contentView.addSubview(rightLabel)
+        
+        leftLabel.snp.makeConstraints { make in
+            make.leading.equalTo(contentView).inset(15)
+            make.centerY.equalToSuperview()
+        }
+        
+        rightLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(contentView).offset(-15)
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
         // Метод для установки данных в ячейку
     func configure(with award: Amount) {
