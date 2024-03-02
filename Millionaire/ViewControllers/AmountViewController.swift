@@ -24,8 +24,17 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         return button
     }()
     let sumOfAward = SumOfAward()
-    var currentQuestionIndex: Int = 1
+    var currentQuestionIndex = 0
     var gameVC: GameViewController?
+    
+    init(currentQuestionIndex: Int) {
+            super.init(nibName: nil, bundle: nil)
+            self.currentQuestionIndex = currentQuestionIndex
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +100,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
                     DispatchQueue.main.async {
                         self.dismissLoadingView()
                         let gameVC = GameViewController(question: question)
-                        let amountVC = AmountViewController()
-                        gameVC.delegate = amountVC
-                        amountVC.saveGameProgress()
+                        gameVC.currentQuestionIndex = self.saveGameProgress(questionIndex: self.currentQuestionIndex)
                         gameVC.modalPresentationStyle = .fullScreen
                         self.present(gameVC, animated: true)
                     }
@@ -162,10 +169,9 @@ extension AmountViewController {
 }
 
 extension AmountViewController: AmountVCDelegate {
-    
-  
-    func saveGameProgress() {
-        
+    func saveGameProgress(questionIndex: Int) -> Int {
+        currentQuestionIndex = questionIndex + 1
+        return questionIndex
     }
 }
 

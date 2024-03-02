@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 protocol AmountVCDelegate: AnyObject {
-    func saveGameProgress()
+    func saveGameProgress(questionIndex: Int) -> Int
 }
 
 class GameViewController: UIViewController {
@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
     var allAnswers: [String] = []
     var correctAnswer: String = ""
     var incorrectAnswers: [String] = []
-    var currentQuestionIndex: Int = 1
+    var currentQuestionIndex: Int = 0
     
     
     // MARK: - Init
@@ -162,6 +162,7 @@ class GameViewController: UIViewController {
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.currentQuestionIndex += 1
                     self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
                 }
             }
@@ -220,7 +221,7 @@ class GameViewController: UIViewController {
     }
     
     private func goToAmountViewController(withQuestionIndex questionIndex: Int) {
-        let resultVC = AmountViewController()
+        let resultVC = AmountViewController(currentQuestionIndex: questionIndex)
         resultVC.currentQuestionIndex = questionIndex
         resultVC.modalPresentationStyle = .fullScreen
         self.present(resultVC, animated: true, completion: nil)
