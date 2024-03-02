@@ -15,8 +15,8 @@ class CustomAnswersButton: UIButton {
         }
     }
     
-    private let prefixLabel = UILabel(text: "")
-    private let answerLabel = UILabel(text: "")
+    internal let prefixLabel = UILabel(text: "")
+    internal let answerLabel = UILabel(text: "")
     
     // MARK: - Init
     init(prefix: String, text: String) {
