@@ -6,14 +6,7 @@ class GameViewController: UIViewController {
     // MARK: - Properties
     private var gameTimer: Timer?
     private var remainingTime = LocalConstants.numberOfSeconds
-    
-//    var fiftyFiftyUsed: Bool = false {
-//        didSet {
-//            fiftyFiftyButton.isEnabled = !fiftyFiftyUsed
-//            fiftyFiftyImageView.image = fiftyFiftyUsed ? UIImage(named: "5050Used") : UIImage(named: "5050")
-//        }
-//    }
-    
+
     let question: Question
     var allAnswers: [String] = []
     var correctAnswer: String = ""
@@ -123,6 +116,7 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateFiftyFiftyButtonState()
+//        prizeMoney.text = "\(GameState.shared.getCurrentPrize()) RUB"
     }
     
     private func setupValuesForAnswers() {
@@ -169,21 +163,35 @@ class GameViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
+                
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
-               
+                
+                self.prizeMoney.text = "\(GameState.shared.getCurrentPrize()) RUB"
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     
                     self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
                 }
+                
             }
+            
         } else {
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.redGradientColors
                 SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
+                            
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.goToResultViewController()
+                    // Получаем гарантированную сумму до сброса игры
+                    let guaranteedPrize = GameState.shared.getGuaranteedPrize()
+                                
+                    // Передаем значения в ResultViewController
+                    let resultVC = ResultViewController()
+                    resultVC.setWinningAmount(GameState.shared.getCurrentPrize())
+                    resultVC.setGuaranteedAmount(guaranteedPrize)
+                    self.present(resultVC, animated: true, completion: nil)
+                    
+                    // Сброс игры после передачи значений
+                    GameState.shared.resetGame()
                 }
             }
         }
@@ -328,6 +336,7 @@ class GameViewController: UIViewController {
         
         fiftyFiftyButton.isEnabled = !GameState.shared.fiftyFiftyUsed
         questionNumber.text = "Вопрос \(GameState.shared.currentQuestionIndex)"
+        prizeMoney.text = "\(GameState.shared.getCurrentPrize()) RUB"
     }
 }
 

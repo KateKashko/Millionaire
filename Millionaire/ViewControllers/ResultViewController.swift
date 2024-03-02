@@ -46,11 +46,16 @@ final class ResultViewController: UIViewController {
         updateWinningAmountLabel()
     }
     
+    func setGuaranteedAmount(_ amount: Int) {
+        // Предположим, у вас есть отдельное свойство или лейбл для отображения несгораемой суммы
+        winningAmountLabel.text = "Гарантированный выигрыш: \(amount) Р"
+    }
+    
     private func updateWinningAmountLabel() {
         if let winningAmount = winningAmount {
             winningAmountLabel.text = "\(winningAmount) P"
         } else {
-            winningAmountLabel.text = "0 рубликов, 0"
+            winningAmountLabel.text = "0 рубликов"
         }
     }
 }
