@@ -7,6 +7,13 @@ class GameViewController: UIViewController {
     private var gameTimer: Timer?
     private var remainingTime = LocalConstants.numberOfSeconds
     
+//    var fiftyFiftyUsed: Bool = false {
+//        didSet {
+//            fiftyFiftyButton.isEnabled = !fiftyFiftyUsed
+//            fiftyFiftyImageView.image = fiftyFiftyUsed ? UIImage(named: "5050Used") : UIImage(named: "5050")
+//        }
+//    }
+    
     let question: Question
     var allAnswers: [String] = []
     var correctAnswer: String = ""
@@ -58,8 +65,9 @@ class GameViewController: UIViewController {
         distribution: .fillEqually
     )
     
-    private let questionNumber = UILabel(
-        text: "Вопрос 1"
+    private lazy var  questionNumber = UILabel(
+        text: "Вопрос (\(currentQuestionIndex)"
+
     )
     
     private let prizeMoney = UILabel(
@@ -109,8 +117,13 @@ class GameViewController: UIViewController {
         setupValuesForAnswers()
         addButtonsTargets()
         updateUI()
+        updateFiftyFiftyButtonState()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateFiftyFiftyButtonState()
+    }
     
     private func setupValuesForAnswers() {
         correctAnswer    = question.results[0].correctAnswer
@@ -128,6 +141,7 @@ class GameViewController: UIViewController {
         buttonB.updateAnswer(with: allAnswers[0].htmlDecoded)
         buttonC.updateAnswer(with: allAnswers[3].htmlDecoded)
         buttonD.updateAnswer(with: allAnswers[2].htmlDecoded)
+        
     }
     
     
@@ -151,10 +165,15 @@ class GameViewController: UIViewController {
         
         if sender.answerTitle.compare(self.correctAnswer, options: .diacriticInsensitive) == .orderedSame {
             
+            GameState.shared.moveToNextQuestion()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
                 sender.currentGradientColors = UIGradientColors.greenGradientColors
                 SoundManager.shared.playSound(LocalConstants.correctAnswerSound)
+               
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    
                     self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
                 }
             }
@@ -223,10 +242,15 @@ class GameViewController: UIViewController {
     // MARK: - Objc methods
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
         
-        fiftyFiftyImageView.image = LocalConstants.fiftyFiftyUsedImage
-        
+        GameState.shared.useFiftyFifty()
+        updateFiftyFiftyButtonState()
         useFiftyFiftyTip()
-        
+  
+    }
+    
+    private func updateFiftyFiftyButtonState() {
+        fiftyFiftyButton.isEnabled = !GameState.shared.fiftyFiftyUsed
+        fiftyFiftyImageView.image = GameState.shared.fiftyFiftyUsed ? UIImage(named: "5050Used") : UIImage(named: "5050")
     }
     
     private func useFiftyFiftyTip() {
@@ -301,6 +325,9 @@ class GameViewController: UIViewController {
         audienceAssistantImageView.addSubview(audienceAssistantButton)
         takeMoneyImageView.addSubview(takeMoneyButton)
         
+        
+        fiftyFiftyButton.isEnabled = !GameState.shared.fiftyFiftyUsed
+        questionNumber.text = "Вопрос \(GameState.shared.currentQuestionIndex)"
     }
 }
 

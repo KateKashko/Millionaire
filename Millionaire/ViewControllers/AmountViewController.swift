@@ -119,7 +119,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.boundsDidChanged = { [weak self] bounds in
             guard let self = self else { return }
-            let gradientLayer = getColorOfLabel(index: amount, viewbounds: bounds)
+            let gradientLayer = self.getColorOfLabel(index: amount, viewbounds: bounds)
             cell.layer.insertSublayer(gradientLayer, at: 0)
             gradientLayer.cornerRadius = 20
         }
