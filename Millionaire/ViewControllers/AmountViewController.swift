@@ -86,22 +86,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc func continueGame() {
         self.showLoadingView()
-
-        if currentQuestionIndex < 15 {
-            NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let question):
-                    DispatchQueue.main.async {
-                        self.dismissLoadingView()
-                        let gameVC = GameViewController(question: question)
-                        gameVC.currentQuestionIndex = self.saveGameProgress(questionIndex: self.currentQuestionIndex)
-                        self.navigationController?.pushViewController(gameVC, animated: true)
-                    }
-                case .failure(let error):
-                    print(error.rawValue)
-                }
-                                                           
+                                              
         switch currentQuestionIndex {
         case 0...4: getQuestion(difficulty: .easy)
         case 5...9: getQuestion(difficulty: .medium)
@@ -116,13 +101,13 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
             self.dismissLoadingView()
             let gameVC = GameViewController(question: question)
             gameVC.currentQuestionIndex = self.currentQuestionIndex
-            gameVC.modalPresentationStyle = .fullScreen
-            self.present(gameVC, animated: true)
+            self.navigationController?.pushViewController(gameVC, animated: true)
+
         }
     }
     
     
-    private func getQuestion(difficuly level: QuestionLevelURL) {
+    private func getQuestion(difficulty level: QuestionLevelURL) {
         NetworkManager.shared.getQuestion(for: level) { [weak self] result in
             guard let self = self else { return }
             switch result {
