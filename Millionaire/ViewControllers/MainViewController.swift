@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 
 final class MainViewController: UIViewController {
     
@@ -57,8 +56,8 @@ final class MainViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.dismissLoadingView()
                     let gameVC = GameViewController(question: question)
-                    gameVC.modalPresentationStyle = .fullScreen
-                    self.present(gameVC, animated: true)
+                    self.navigationController?.pushViewController(gameVC, animated: true)
+                    self.navigationItem.hidesBackButton = true
                 }
             case .failure(let error):
                 print(error.rawValue)
@@ -68,8 +67,8 @@ final class MainViewController: UIViewController {
     
     @objc func showRules() {
         let rulesVC = RulesViewController()
-        rulesVC.modalPresentationStyle = .fullScreen
-        present(rulesVC, animated: true)
+        self.navigationController?.pushViewController(rulesVC, animated: true)
+        self.navigationItem.hidesBackButton = true
     }
 }
 
@@ -128,7 +127,3 @@ private extension MainViewController {
 }
 
 
-////MARK: - Preview
-//#Preview("MainViewController") {
-//    MainViewController()
-//}

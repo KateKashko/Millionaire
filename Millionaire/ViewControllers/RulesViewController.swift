@@ -48,15 +48,21 @@ final class RulesViewController: UIViewController {
         return content
     }()
     
-    private let startGameButton = UIButton(title: "Начать игру")
+    private let startGameButton = UIButton(title: "На главную")
     
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         setViews()
         setupConstraints()
+        addAction()
+    }
+    
+    func addAction() {
+        startGameButton.addTarget(self, action: #selector(startGameButtonTappet), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,10 +74,7 @@ final class RulesViewController: UIViewController {
     }
     
     @objc private func startGameButtonTappet() {
-//        let gameVC = GameViewController()
-//        gameVC.modalPresentationStyle = .fullScreen
-//        gameVC.modalTransitionStyle = .crossDissolve
-//        present(gameVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -109,23 +112,5 @@ extension RulesViewController {
             startGameButton.heightAnchor.constraint(equalToConstant: 54)
             
         ])
-    }
-}
-
-extension UIView {
-    func applyGradient() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
-            UIColor(red: 119 / 255, green: 221 / 255, blue: 78 / 255, alpha: 1).cgColor,
-            UIColor(red: 65 / 255, green: 179 / 255, blue: 70 / 255, alpha: 1).cgColor,
-            UIColor(red: 119 / 255, green: 221 / 255, blue: 78 / 255, alpha: 1).cgColor
-        ]
-        gradient.locations = [0, 0.5, 1]
-        gradient.startPoint = CGPoint(x: 0.25, y: 0.5)
-        gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
-        gradient.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: -1, c: 1, d: 0, tx: 0, ty: 1))
-        gradient.frame = self.bounds
-        gradient.cornerRadius = 15
-        self.layer.insertSublayer(gradient, at: 0)
     }
 }

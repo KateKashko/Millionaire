@@ -18,7 +18,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
+        button.layer.borderWidth = 1
         button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.addTarget(self, action: #selector(continueGame), for: .touchUpInside)
         return button
@@ -38,6 +38,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         setupViews()
         setupBackground()
         setupTableView()
@@ -85,10 +86,26 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc func continueGame() {
         self.showLoadingView()
+
+        if currentQuestionIndex < 15 {
+            NetworkManager.shared.getQuestion(for: .easy) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let question):
+                    DispatchQueue.main.async {
+                        self.dismissLoadingView()
+                        let gameVC = GameViewController(question: question)
+                        gameVC.currentQuestionIndex = self.saveGameProgress(questionIndex: self.currentQuestionIndex)
+                        self.navigationController?.pushViewController(gameVC, animated: true)
+                    }
+                case .failure(let error):
+                    print(error.rawValue)
+                }
+                                                           
         switch currentQuestionIndex {
-        case 0...4: getQuestion(difficuly: .easy)
-        case 5...9: getQuestion(difficuly: .medium)
-        case 10...14: getQuestion(difficuly: .hard)
+        case 0...4: getQuestion(difficulty: .easy)
+        case 5...9: getQuestion(difficulty: .medium)
+        case 10...14: getQuestion(difficulty: .hard)
         default: print("Вы выиграли 1 млн руб!")
         }
     }
