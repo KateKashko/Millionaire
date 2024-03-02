@@ -157,6 +157,7 @@ class GameViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
                 }
+            }
         } else {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -224,6 +225,26 @@ class GameViewController: UIViewController {
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
         
         fiftyFiftyImageView.image = LocalConstants.fiftyFiftyUsedImage
+        
+        useFiftyFiftyTip()
+        
+    }
+    
+    private func useFiftyFiftyTip() {
+        
+        fiftyFiftyButton.isEnabled = false
+        var incorrectOptions = incorrectAnswers
+        
+        while incorrectOptions.count > 2 {
+            incorrectOptions.remove(at: Int.random(in: 0..<incorrectOptions.count))
+        }
+        
+        [buttonA, buttonB, buttonC, buttonD].forEach { button in
+            if incorrectOptions.contains(where: { $0.htmlDecoded == button.answerTitle }) {
+                button.answerLabel.text = ""
+                button.prefixLabel.text = ""
+            }
+        }
     }
     
     @objc private func friendCallTapped() {
