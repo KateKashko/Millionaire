@@ -207,11 +207,10 @@ class GameViewController: UIViewController {
     
     private func goToAmountViewController(withQuestionIndex questionIndex: Int) {
         let resultVC = AmountViewController()
-        resultVC.previousQuestionIndex = currentQuestionIndex
+        resultVC.previousQuestionIndex = questionIndex
+        resultVC.modalPresentationStyle = .fullScreen
         self.present(resultVC, animated: true, completion: nil)
-        resultVC.onDismiss = { [weak self] updatedIndex in
-            self?.currentQuestionIndex = updatedIndex
-        }
+        
     }
     
     // MARK: - Objc methods
