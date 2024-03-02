@@ -157,8 +157,6 @@ class GameViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.goToAmountViewController(withQuestionIndex: self.currentQuestionIndex)
                 }
-            }
-            
         } else {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
