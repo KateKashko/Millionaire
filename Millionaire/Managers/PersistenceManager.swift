@@ -19,6 +19,8 @@ enum PersistenceManager {
     
     enum Keys {
         static let isAudienceHelpUsed = "isAudienceHelpUsed"
+        static let isFiftyFiftyUsed = "isFiftyFiftyUsed"
+        static let isFriendCallUsed = "isFriendCallUsed"
     }
 
 }

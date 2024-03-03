@@ -71,6 +71,8 @@ final class ResultViewController: UIViewController {
     // MARK: - Private Methods
     @objc private func startGameButtonTappet() {
         PersistenceManager.defaults.set(false, forKey: PersistenceManager.Keys.isAudienceHelpUsed)
+        PersistenceManager.defaults.set(false, forKey: PersistenceManager.Keys.isFiftyFiftyUsed)
+        PersistenceManager.defaults.set(false, forKey: PersistenceManager.Keys.isFriendCallUsed)
         let mainVC = MainViewController()
         self.navigationController?.pushViewController(mainVC, animated: true)
     }
