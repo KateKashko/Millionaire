@@ -43,7 +43,7 @@
 		B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */; };
 		B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */; };
 		B68B17212B8F810D009FB5F0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68B17202B8F810D009FB5F0 /* SoundManager.swift */; };
-		B690CCA42B944AD700FAF4E2 /* FriendCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B690CCA32B944AD700FAF4E2 /* FriendCallingViewController.swift */; };
+		B690CCA42B944AD700FAF4E2 /* FriendCallingCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B690CCA32B944AD700FAF4E2 /* FriendCallingCustomView.swift */; };
 		B6B10AE02B8CB01900CB3F23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6B10ADF2B8CB01900CB3F23 /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
 		B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 		B68B17202B8F810D009FB5F0 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		B690CCA32B944AD700FAF4E2 /* FriendCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCallingViewController.swift; sourceTree = "<group>"; };
+		B690CCA32B944AD700FAF4E2 /* FriendCallingCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCallingCustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,6 @@
 				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
 				83361ED12B8FC9430089B169 /* CustomAnswersButton.swift */,
 				83361EDB2B8FD0A00089B169 /* CustomButton.swift */,
-				B690CCA32B944AD700FAF4E2 /* FriendCallingViewController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -184,6 +183,7 @@
 			children = (
 				83361EEC2B9432F60089B169 /* HelpBarsView.swift */,
 				83361EE52B942F2E0089B169 /* HelpBar.swift */,
+				B690CCA32B944AD700FAF4E2 /* FriendCallingCustomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				83361ED42B8FCA4D0089B169 /* UIViewController+Ext.swift in Sources */,
 				83361ECA2B8D0D810089B169 /* NetworkManager.swift in Sources */,
 				31472B662B8D28C80068D848 /* Amount.swift in Sources */,
-				B690CCA42B944AD700FAF4E2 /* FriendCallingViewController.swift in Sources */,
+				B690CCA42B944AD700FAF4E2 /* FriendCallingCustomView.swift in Sources */,
 				83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */,
 				83361EED2B9432F60089B169 /* HelpBarsView.swift in Sources */,
 				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,

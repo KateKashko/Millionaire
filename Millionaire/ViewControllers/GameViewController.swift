@@ -264,7 +264,7 @@ class GameViewController: UIViewController {
     
     private func useFiftyFiftyTip() {
         
-        
+        fiftyFiftyButton.isEnabled = false
         
         PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isFiftyFiftyUsed)
         
@@ -283,6 +283,9 @@ class GameViewController: UIViewController {
     }
     
     @objc private func friendCallTapped() {
+        
+        friendCallButton.isEnabled = false
+        
         PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isFriendCallUsed)
         
         friendCallImageView.image = LocalConstants.friendCallUsedImage
@@ -291,6 +294,8 @@ class GameViewController: UIViewController {
     }
     
     @objc private func audienceAssistantTapped() {
+        
+        audienceAssistantButton.isEnabled = false
         
         PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isAudienceHelpUsed)
         
@@ -301,6 +306,7 @@ class GameViewController: UIViewController {
     }
     
     @objc private func takeMoneyTapped() {
+        
         
         SoundManager.shared.playSound(LocalConstants.victoryMillionSound)
         goToResultViewController()
