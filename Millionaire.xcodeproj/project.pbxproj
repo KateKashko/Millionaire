@@ -23,6 +23,7 @@
 		83361EE62B942F2E0089B169 /* HelpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EE52B942F2E0089B169 /* HelpBar.swift */; };
 		83361EE82B942FBB0089B169 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EE72B942FBB0089B169 /* UIView+Ext.swift */; };
 		83361EED2B9432F60089B169 /* HelpBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EEC2B9432F60089B169 /* HelpBarsView.swift */; };
+		83361EEF2B94495E0089B169 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EEE2B94495E0089B169 /* PersistenceManager.swift */; };
 		939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492C82B8B6DE30019C9E5 /* AppDelegate.swift */; };
 		939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */; };
 		939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CC2B8B6DE30019C9E5 /* MainViewController.swift */; };
@@ -62,6 +63,7 @@
 		83361EE52B942F2E0089B169 /* HelpBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpBar.swift; sourceTree = "<group>"; };
 		83361EE72B942FBB0089B169 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		83361EEC2B9432F60089B169 /* HelpBarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpBarsView.swift; sourceTree = "<group>"; };
+		83361EEE2B94495E0089B169 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		939492C52B8B6DE30019C9E5 /* Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		939492C82B8B6DE30019C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				83361EC92B8D0D810089B169 /* NetworkManager.swift */,
 				B68B17202B8F810D009FB5F0 /* SoundManager.swift */,
+				83361EEE2B94495E0089B169 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */,
 				83361EDC2B8FD0A00089B169 /* CustomButton.swift in Sources */,
 				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
+				83361EEF2B94495E0089B169 /* PersistenceManager.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
 				B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */,
 				83361EC62B8D0D770089B169 /* Question.swift in Sources */,

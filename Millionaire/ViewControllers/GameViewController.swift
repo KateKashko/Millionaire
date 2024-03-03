@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
     var incorrectAnswers: [String] = []
     var currentQuestionIndex: Int = 0
     
+    // Button's State Properties
+    var isAudienceHelpUsed = false
     
     // MARK: - Init
     init(question: Question) {
@@ -110,9 +112,21 @@ class GameViewController: UIViewController {
         startTimer()
         setupValuesForAnswers()
         addButtonsTargets()
+        setHelperButtonStates()
         updateUI()
     }
-
+    
+    
+    private func setHelperButtonStates() {
+        //audienceAssistantButton state
+        isAudienceHelpUsed = PersistenceManager.defaults.value(forKey: PersistenceManager.Keys.isAudienceHelpUsed) as? Bool ?? false
+        audienceAssistantImageView.image = isAudienceHelpUsed ? LocalConstants.fiftyFiftyUsedImage : LocalConstants.audienceHelpImage
+        audienceAssistantButton.isEnabled = isAudienceHelpUsed ? false : true
+        
+        //TODO: friendCallButton state.... friendCallButton state.....
+    }
+    
+    
     
     private func setupValuesForAnswers() {
         correctAnswer    = question.results[0].correctAnswer
@@ -253,6 +267,8 @@ class GameViewController: UIViewController {
     }
     
     @objc private func audienceAssistantTapped() {
+        
+        PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isAudienceHelpUsed)
         
         let audienceHelpVC = AudienceHelpViewController()
         present(audienceHelpVC, animated: true)

@@ -12,9 +12,11 @@ final class AudienceHelpViewController: UIViewController {
 
     private let containerView = UIView()
     private let helpBarsView  = HelpBarsView()
+    private let closeButton   = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCloseButton()
         configureViewController()
     }
     
@@ -25,7 +27,7 @@ final class AudienceHelpViewController: UIViewController {
     
     private func configureViewController() {
         
-        view.addSubviews(containerView)
+        view.addSubviews(containerView, closeButton)
         helpBarsView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(helpBarsView)
         
@@ -39,13 +41,31 @@ final class AudienceHelpViewController: UIViewController {
             helpBarsView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             helpBarsView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             helpBarsView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            helpBarsView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.8)
+            helpBarsView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.8),
+            
+            closeButton.trailingAnchor.constraint(equalTo: helpBarsView.trailingAnchor, constant: -5),
+            closeButton.topAnchor.constraint(equalTo: helpBarsView.topAnchor, constant: 5)
+            
         ])
         
         let data = createDataSet()
-        set(data: data)
+        self.set(data: data)
     }
     
+    
+    private func configureCloseButton() {
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        closeButton.setTitleColor(.label, for: .normal)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        closeButton.backgroundColor = .clear
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+    }
+    
+    
+    @objc private func closeTapped(){
+        dismiss(animated: true)
+    }
     
 }
 
