@@ -222,6 +222,13 @@ class GameViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    func showFriendCallHint() {
+        let hintView = FriendCallingСustomView(frame: CGRect(x: 0, y: 0, width: 500, height: 500 ))
+        hintView.center = self.view.center
+        self.view.addSubview(hintView)
+        hintView.showHint()
+    }
+    
     // MARK: - Objc methods
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
         
@@ -251,6 +258,8 @@ class GameViewController: UIViewController {
     @objc private func friendCallTapped() {
         
         friendCallImageView.image = LocalConstants.friendCallUsedImage
+        
+        showFriendCallHint()
     }
     
     @objc private func audienceAssistantTapped() {
@@ -354,6 +363,8 @@ private enum LocalConstants {
     static let fiftyFiftyUsedImage = UIImage(named: "5050Used")
     static let friendCallUsedImage = UIImage(named: "callToFriendUsed")
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
+    
+    static let friendIsCalling = UIImage(named: "FriendCalling")
     
     static let takeMoneyImage = UIImage(named: "monetization_on")
     
