@@ -25,6 +25,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     }()
     let sumOfAward = SumOfAward()
     var currentQuestionIndex = 0
+    var currentWinningAmount = 100
     var gameVC: GameViewController?
     
     init(currentQuestionIndex: Int) {
@@ -101,6 +102,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
             self.dismissLoadingView()
             let gameVC = GameViewController(question: question)
             gameVC.currentQuestionIndex = self.currentQuestionIndex
+            gameVC.currentWinningAmount = self.sumOfAward.sumOfAward.reversed()[self.currentQuestionIndex].award
             self.navigationController?.pushViewController(gameVC, animated: true)
 
         }

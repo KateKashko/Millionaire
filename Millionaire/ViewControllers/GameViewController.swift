@@ -11,7 +11,8 @@ class GameViewController: UIViewController {
     var allAnswers: [String] = []
     var correctAnswer: String = ""
     var incorrectAnswers: [String] = []
-    var currentQuestionIndex: Int = 0
+    var currentQuestionIndex = 0
+    var currentWinningAmount = 100
     
     // Button's State Properties
     var isAudienceHelpUsed = false
@@ -67,8 +68,8 @@ class GameViewController: UIViewController {
         text: "Вопрос \(currentQuestionIndex + 1)"
     )
     
-    private let prizeMoney = UILabel(
-        text: "100 RUB"
+    private lazy var prizeMoney = UILabel(
+        text: "\(currentWinningAmount) RUB"
     )
         
     private let questionLabel = UILabel (
