@@ -238,6 +238,7 @@ class GameViewController: UIViewController {
     // MARK: - Navigation
     private func goToResultViewController() {
         let resultVC = ResultViewController()
+        resultVC.setWinningAmount(currentWinningAmount)
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
     
