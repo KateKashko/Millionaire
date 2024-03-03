@@ -1,7 +1,6 @@
 import UIKit
 import SnapKit
 
-
 class GameViewController: UIViewController {
     
     // MARK: - Properties
@@ -16,6 +15,8 @@ class GameViewController: UIViewController {
     
     // Button's State Properties
     var isAudienceHelpUsed = false
+    var isFiftyFiftyUsed = false
+    var isFriendCallUsed = false
     
     // MARK: - Init
     init(question: Question) {
@@ -119,11 +120,21 @@ class GameViewController: UIViewController {
     
     private func setHelperButtonStates() {
         //audienceAssistantButton state
-        isAudienceHelpUsed = PersistenceManager.defaults.value(forKey: PersistenceManager.Keys.isAudienceHelpUsed) as? Bool ?? false
-        audienceAssistantImageView.image = isAudienceHelpUsed ? LocalConstants.fiftyFiftyUsedImage : LocalConstants.audienceHelpImage
-        audienceAssistantButton.isEnabled = isAudienceHelpUsed ? false : true
+        isFiftyFiftyUsed = PersistenceManager.defaults.value(forKey: PersistenceManager.Keys.isFiftyFiftyUsed) as? Bool ?? false
+        fiftyFiftyImageView.image = isFiftyFiftyUsed ? LocalConstants.fiftyFiftyUsedImage : LocalConstants.fiftyFiftyImage
+        fiftyFiftyButton.isEnabled = !isFiftyFiftyUsed
         
-        //TODO: friendCallButton state.... friendCallButton state.....
+        // TODO: friendCallButton state....
+        
+        // Исправленное присваивание для isAudienceHelpUsed
+        isAudienceHelpUsed = PersistenceManager.defaults.value(forKey: PersistenceManager.Keys.isAudienceHelpUsed) as? Bool ?? false
+        audienceAssistantImageView.image = isAudienceHelpUsed ? LocalConstants.audienceHelpUsedImage : LocalConstants.audienceHelpImage
+        audienceAssistantButton.isEnabled = !isAudienceHelpUsed
+        
+        isFriendCallUsed = PersistenceManager.defaults.value(forKey: PersistenceManager.Keys.isFriendCallUsed) as? Bool ?? false
+        friendCallImageView.image = isFriendCallUsed ? LocalConstants.friendCallUsedImage : LocalConstants.friendCallImage
+        friendCallButton.isEnabled = !isFriendCallUsed
+        
     }
     
     
@@ -235,6 +246,13 @@ class GameViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    func showFriendCallHint() {
+        let hintView = FriendCallingСustomView(frame: CGRect(x: 0, y: 0, width: 500, height: 500 ))
+        hintView.center = self.view.center
+        self.view.addSubview(hintView)
+        hintView.showHint()
+    }
+    
     // MARK: - Objc methods
     @objc private func fiftyFiftyTapped(_ sender: UIButton) {
         
@@ -247,6 +265,9 @@ class GameViewController: UIViewController {
     private func useFiftyFiftyTip() {
         
         fiftyFiftyButton.isEnabled = false
+        
+        PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isFiftyFiftyUsed)
+        
         var incorrectOptions = incorrectAnswers
         
         while incorrectOptions.count > 2 {
@@ -263,10 +284,18 @@ class GameViewController: UIViewController {
     
     @objc private func friendCallTapped() {
         
+        friendCallButton.isEnabled = false
+        
+        PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isFriendCallUsed)
+        
         friendCallImageView.image = LocalConstants.friendCallUsedImage
+        
+        showFriendCallHint()
     }
     
     @objc private func audienceAssistantTapped() {
+        
+        audienceAssistantButton.isEnabled = false
         
         PersistenceManager.defaults.set(true, forKey: PersistenceManager.Keys.isAudienceHelpUsed)
         
@@ -277,6 +306,7 @@ class GameViewController: UIViewController {
     }
     
     @objc private func takeMoneyTapped() {
+        
         
         SoundManager.shared.playSound(LocalConstants.victoryMillionSound)
         goToResultViewController()
@@ -372,6 +402,8 @@ private enum LocalConstants {
     static let fiftyFiftyUsedImage = UIImage(named: "5050Used")
     static let friendCallUsedImage = UIImage(named: "callToFriendUsed")
     static let audienceHelpUsedImage = UIImage(named: "helpUsed")
+    
+    static let friendIsCalling = UIImage(named: "FriendCalling")
     
     static let takeMoneyImage = UIImage(named: "monetization_on")
     
