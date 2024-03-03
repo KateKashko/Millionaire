@@ -163,7 +163,6 @@ class GameViewController: UIViewController {
                 }
             }
         } else {
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 sender.currentGradientColors = UIGradientColors.redGradientColors
                 SoundManager.shared.playSound(LocalConstants.wrongAnswerSound)
@@ -254,6 +253,9 @@ class GameViewController: UIViewController {
     }
     
     @objc private func audienceAssistantTapped() {
+        
+        let audienceHelpVC = AudienceHelpViewController()
+        present(audienceHelpVC, animated: true)
         
         audienceAssistantImageView.image = LocalConstants.audienceHelpUsedImage
     }
