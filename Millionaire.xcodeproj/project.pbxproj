@@ -18,6 +18,12 @@
 		83361ED22B8FC9430089B169 /* CustomAnswersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361ED12B8FC9430089B169 /* CustomAnswersButton.swift */; };
 		83361ED42B8FCA4D0089B169 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361ED32B8FCA4D0089B169 /* UIViewController+Ext.swift */; };
 		83361EDC2B8FD0A00089B169 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EDB2B8FD0A00089B169 /* CustomButton.swift */; };
+		83361EDF2B942D380089B169 /* AudienceHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EDE2B942D380089B169 /* AudienceHelpViewController.swift */; };
+		83361EE22B942E570089B169 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EE12B942E570089B169 /* BaseView.swift */; };
+		83361EE62B942F2E0089B169 /* HelpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EE52B942F2E0089B169 /* HelpBar.swift */; };
+		83361EE82B942FBB0089B169 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EE72B942FBB0089B169 /* UIView+Ext.swift */; };
+		83361EED2B9432F60089B169 /* HelpBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EEC2B9432F60089B169 /* HelpBarsView.swift */; };
+		83361EEF2B94495E0089B169 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83361EEE2B94495E0089B169 /* PersistenceManager.swift */; };
 		939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492C82B8B6DE30019C9E5 /* AppDelegate.swift */; };
 		939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */; };
 		939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939492CC2B8B6DE30019C9E5 /* MainViewController.swift */; };
@@ -53,6 +59,12 @@
 		83361ED12B8FC9430089B169 /* CustomAnswersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnswersButton.swift; path = Millionaire/Extensions/CustomAnswersButton.swift; sourceTree = SOURCE_ROOT; };
 		83361ED32B8FCA4D0089B169 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		83361EDB2B8FD0A00089B169 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		83361EDE2B942D380089B169 /* AudienceHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceHelpViewController.swift; sourceTree = "<group>"; };
+		83361EE12B942E570089B169 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		83361EE52B942F2E0089B169 /* HelpBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpBar.swift; sourceTree = "<group>"; };
+		83361EE72B942FBB0089B169 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		83361EEC2B9432F60089B169 /* HelpBarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpBarsView.swift; sourceTree = "<group>"; };
+		83361EEE2B94495E0089B169 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		939492C52B8B6DE30019C9E5 /* Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		939492C82B8B6DE30019C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		939492CA2B8B6DE30019C9E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +104,7 @@
 		31472B6B2B8D45850068D848 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				83361EDD2B942CC20089B169 /* ViewControllers */,
 				31472B692B8D457F0068D848 /* CustomAwardCell.swift */,
 				83361ED12B8FC9430089B169 /* CustomAnswersButton.swift */,
 				83361EDB2B8FD0A00089B169 /* CustomButton.swift */,
@@ -111,6 +124,7 @@
 		83361EC02B8D0D630089B169 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				83361EE72B942FBB0089B169 /* UIView+Ext.swift */,
 				83361EC12B8D0D630089B169 /* String+Ext.swift */,
 				B60D80E62B8D96F300236CC6 /* UIcolor + Hex.swift */,
 				B60D80EC2B8DC3C000236CC6 /* UIKit + Extensions.swift */,
@@ -135,8 +149,43 @@
 			children = (
 				83361EC92B8D0D810089B169 /* NetworkManager.swift */,
 				B68B17202B8F810D009FB5F0 /* SoundManager.swift */,
+				83361EEE2B94495E0089B169 /* PersistenceManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		83361EDD2B942CC20089B169 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				83361EE32B942F030089B169 /* AudienceHelpViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		83361EE02B942E4D0089B169 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				83361EE12B942E570089B169 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		83361EE32B942F030089B169 /* AudienceHelpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83361EDE2B942D380089B169 /* AudienceHelpViewController.swift */,
+				83361EE42B942F100089B169 /* Views */,
+			);
+			path = AudienceHelpViewController;
+			sourceTree = "<group>";
+		};
+		83361EE42B942F100089B169 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83361EEC2B9432F60089B169 /* HelpBarsView.swift */,
+				83361EE52B942F2E0089B169 /* HelpBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		939492BC2B8B6DE30019C9E5 = {
@@ -166,6 +215,7 @@
 				31472B6B2B8D45850068D848 /* CustomViews */,
 				939492F32B8BC70F0019C9E5 /* ViewControllers */,
 				939492F72B8BC7960019C9E5 /* Resources */,
+				83361EE02B942E4D0089B169 /* Base */,
 				939492D62B8B6DE70019C9E5 /* Info.plist */,
 			);
 			path = Millionaire;
@@ -304,22 +354,28 @@
 				31472B662B8D28C80068D848 /* Amount.swift in Sources */,
 				B690CCA42B944AD700FAF4E2 /* FriendCallingViewController.swift in Sources */,
 				83361EC22B8D0D630089B169 /* String+Ext.swift in Sources */,
+				83361EED2B9432F60089B169 /* HelpBarsView.swift in Sources */,
 				939492F02B8BC6B20019C9E5 /* GameViewController.swift in Sources */,
 				31472B682B8D294B0068D848 /* SumOfAward.swift in Sources */,
 				83361ED22B8FC9430089B169 /* CustomAnswersButton.swift in Sources */,
 				939492CD2B8B6DE30019C9E5 /* MainViewController.swift in Sources */,
 				83361EC72B8D0D770089B169 /* Content.swift in Sources */,
+				83361EE62B942F2E0089B169 /* HelpBar.swift in Sources */,
 				B68B17212B8F810D009FB5F0 /* SoundManager.swift in Sources */,
 				B60D80ED2B8DC3C000236CC6 /* UIKit + Extensions.swift in Sources */,
 				83361EDC2B8FD0A00089B169 /* CustomButton.swift in Sources */,
 				939492F52B8BC7490019C9E5 /* ResultViewController.swift in Sources */,
+				83361EEF2B94495E0089B169 /* PersistenceManager.swift in Sources */,
 				939492C92B8B6DE30019C9E5 /* AppDelegate.swift in Sources */,
 				B60D80E72B8D96F300236CC6 /* UIcolor + Hex.swift in Sources */,
 				83361EC62B8D0D770089B169 /* Question.swift in Sources */,
 				939492F22B8BC7030019C9E5 /* AmountViewController.swift in Sources */,
 				939492EE2B8BC6A10019C9E5 /* RulesViewController.swift in Sources */,
 				83361EBF2B8D0D530089B169 /* MError.swift in Sources */,
+				83361EE22B942E570089B169 /* BaseView.swift in Sources */,
+				83361EE82B942FBB0089B169 /* UIView+Ext.swift in Sources */,
 				939492CB2B8B6DE30019C9E5 /* SceneDelegate.swift in Sources */,
+				83361EDF2B942D380089B169 /* AudienceHelpViewController.swift in Sources */,
 				31472B6A2B8D457F0068D848 /* CustomAwardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
