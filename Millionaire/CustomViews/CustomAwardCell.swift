@@ -28,7 +28,7 @@ class CustomAwardCell: UITableViewCell {
         contentView.contentMode = .scaleAspectFill
         self.backgroundColor = UIColor.clear
         self.layer.borderColor = .init(gray: 255, alpha: 1)
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = 20
         
         contentView.addSubview(leftLabel)
