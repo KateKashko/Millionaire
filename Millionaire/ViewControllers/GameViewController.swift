@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
     
     private let headerStackView = UIStackView(
         axis: .vertical,
-        distribution: .fillProportionally
+        distribution: .fillEqually
     )
     
     private let headerHorizontalStackView = UIStackView(
@@ -65,11 +65,12 @@ class GameViewController: UIViewController {
     )
     
     private lazy var questionNumber = UILabel(
-        text: "Вопрос \(currentQuestionIndex + 1)"
+        text: "Question \(currentQuestionIndex + 1)"
     )
     
     private lazy var prizeMoney = UILabel(
-        text: "\(currentWinningAmount) RUB"
+        text: "\(currentWinningAmount) $"
+        
     )
         
     private let questionLabel = UILabel (
@@ -364,7 +365,7 @@ extension GameViewController {
             make.edges.equalToSuperview()
         }
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.edges.equalTo(view.safeAreaLayoutGuide).inset(12)
         }
         answersStackView.snp.makeConstraints { make in
             make.height.equalTo(250)

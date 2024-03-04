@@ -79,7 +79,7 @@ class FriendCallingСustomView: UIView {
     func showHint() {
         
         let randomAnswer = answers.randomElement() ?? "A"
-        hintLabel.text = "Я думаю, что правильный ответ - \(randomAnswer)"
+        hintLabel.text = "I think the answer is  - \(randomAnswer)"
         
         
         self.alpha = 0

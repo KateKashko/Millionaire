@@ -15,7 +15,7 @@ enum QuestionLevelURL: String {
 
 class NetworkManager {
     
-    static let shared   = NetworkManager()
+    static let shared = NetworkManager()
     
     private init() {}
     
@@ -43,9 +43,9 @@ class NetworkManager {
             }
             
             do {
-                let decoder                     = JSONDecoder()
-                decoder.keyDecodingStrategy     = .convertFromSnakeCase
-                let question                   = try decoder.decode(Question.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let question = try decoder.decode(Question.self, from: data)
                 completed(.success(question))
             } catch {
                 completed(.failure(.invalidData))

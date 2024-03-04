@@ -68,22 +68,8 @@ class CustomAnswersButton: UIButton {
         
         addSubview(prefixLabel)
         addSubview(answerLabel)
-        
-////        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-//        addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
-//        addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)
     }
     
-    // MARK: - Objc methods
-//    @objc private func buttonTouchDown() {
-//        applyGradient(LocalConstants.touchDownColors)
-//        print("W")
-//    }
-
-//     @objc private func buttonTouchUp() {
-//         applyGradient(colors: UIGradientColors.blueGradientColors)
-//     }
-//
     // MARK: - Setup Constraints
     private func setupConstraints() {
         

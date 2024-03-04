@@ -29,7 +29,7 @@ final class ResultViewController: UIViewController {
     
     private lazy var winAmountLabel: UILabel = {
         let element = UILabel()
-        element.text = "Ваш выигрыш:"
+        element.text = "You win:"
         element.font = UIFont.systemFont(ofSize: 40, weight: .medium)
         element.textColor = .white
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ final class ResultViewController: UIViewController {
         return element
     }()
 
-    private let playAgainButton = UIButton(title: "Начать заново")
+    private let playAgainButton = UIButton(title: "Play again")
    
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -84,9 +84,9 @@ final class ResultViewController: UIViewController {
     
     private func updateWinningAmountLabel() {
         if let winningAmount = winningAmount {
-            winningAmountLabel.text = "\(winningAmount) P"
+            winningAmountLabel.text = "\(winningAmount) $"
         } else {
-            winningAmountLabel.text = "0 RUB"
+            winningAmountLabel.text = "0 $"
         }
     }
 }

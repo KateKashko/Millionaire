@@ -14,7 +14,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     let tableView = UITableView()
     lazy var nextQuestionButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Следующий вопрос", for: .normal)
+        button.setTitle("Next question", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 15
@@ -92,7 +92,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         case 0...4: getQuestion(difficulty: .easy)
         case 5...9: getQuestion(difficulty: .medium)
         case 10...14: getQuestion(difficulty: .hard)
-        default: print("Вы выиграли 1 млн руб!")
+        default: print("You win 1 000 000 $!")
         }
     }
     
