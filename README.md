@@ -4,13 +4,16 @@
 
 ### Stack: UIKit / MVC / SnapKit / API
 
-In order to earn 1 million rubles, you must correctly answer 15 questions from various fields of knowledge.\
+![Запись-экрана-2024-03-04-в-17 39 29](https://github.com/KateKashko/Millionaire/assets/107617602/78c92503-5e81-4c19-b13b-dbc0128bb025)
+
+
+In order to earn 1 million $, you must correctly answer 15 questions from various fields of knowledge.\
 Each question has 4 answer options, of which only one is correct. You must answer within 30 seconds.
 
 There are three fireproof amounts:
--	1,000 rubles
--	32,000 rubles
--	1,000,000 rubles
+-	1,000 $
+-	32,000 $
+-	1,000,000 $
 
 There are also three tips:
 - 50/50: 2 incorrect answers will disappear.
