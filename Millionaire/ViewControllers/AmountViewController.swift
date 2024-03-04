@@ -12,17 +12,7 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     
     let backGround = UIImageView()
     let tableView = UITableView()
-    lazy var nextQuestionButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Next question", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.backgroundColor = .systemGreen
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.addTarget(self, action: #selector(continueGame), for: .touchUpInside)
-        return button
-    }()
+    lazy var nextQuestionButton = UIButton(title: "Next question")
     let sumOfAward = SumOfAward()
     var currentQuestionIndex = 0
     var currentWinningAmount = 100
@@ -40,12 +30,25 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        tableView.separatorInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         setupViews()
         setupBackground()
         setupTableView()
         setupLayout()
+        addAction()
     }
 
+    func addAction() {
+        nextQuestionButton.addTarget(self, action: #selector(continueGame), for: .touchUpInside)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.nextQuestionButton.applyGradient(colors: [
+            UIColor(named: "blueButton") ?? .clear,
+            UIColor(named: "blueButtonShadow") ?? .clear,
+            UIColor(named: "blueButton") ?? .clear
+        ])
+    }
     
     func setupViews() {
         view.addSubview(backGround)
@@ -60,13 +63,14 @@ class AmountViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
             make.bottom.equalTo(nextQuestionButton.snp.top).offset(-10)
         }
         
         nextQuestionButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-40)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            make.height.equalTo(45)
         }
     }
     
