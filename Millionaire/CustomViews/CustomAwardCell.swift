@@ -51,8 +51,8 @@ class CustomAwardCell: UITableViewCell {
     
         // Метод для установки данных в ячейку
     func configure(with award: Amount) {
-        leftLabel.text = "Вопрос \(award.num)"
-        rightLabel.text = "\(award.award) Рублей"
+        leftLabel.text = "Question \(award.num)"
+        rightLabel.text = "\(award.award) $"
         }
     }
 

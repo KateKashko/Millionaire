@@ -15,8 +15,8 @@ final class MainViewController: UIViewController {
     private var millionaireImageView = UIImageView()
     private let millionaireImage = UIImage(named: "image")
     
-    private let startGameButton = UIButton(title: "Начать игру")
-    private let gameRulesButton = UIButton(title: "Правила игры")
+    private let startGameButton = UIButton(title: "Start the game")
+    private let gameRulesButton = UIButton(title: "Rules")
     
     //MARK: - Life cycle
     override func viewDidLoad() {

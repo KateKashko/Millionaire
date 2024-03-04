@@ -27,7 +27,7 @@ final class RulesViewController: UIViewController {
     
     private lazy var mainLabel: UILabel = {
         let element = UILabel()
-        element.text = "Правила игры"
+        element.text = "Rules"
         element.font = .systemFont(ofSize: 40, weight: .medium)
         element.textColor = .white
         element.textAlignment = .center
@@ -40,7 +40,7 @@ final class RulesViewController: UIViewController {
         let myAttribute = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.5, weight: .regular),
                             NSAttributedString.Key.foregroundColor: UIColor.white,
         ]
-        let myString = NSMutableAttributedString(string: "Для того чтобы заработать 1 миллион рублей необходимо правильно ответить на 15 вопросов из различных областей знаний.\n\nКаждый вопрос имеет 4 варианта ответа, из которых только один верный.\n\nСуществуют три несгораемых суммы:\n- 1 000 рублей \n- 32 000 рублей \n- 1 000 000 рублей\n\nТакже есть три подсказки: \n- 50/50: исчезнут 2 неверных ответа. \n- Помощь зала: зал поможет с ответом.\n-Звонок другу: в течении 30 секунд игрок может посоветоваться с другом по телефону.\n\nВы можете забрать сумму в любой момент, пока не ответили неверно. \n\nУдачной игры!", attributes: myAttribute )
+        let myString = NSMutableAttributedString(string: "In order to earn 1 million $, you must correctly answer 15 questions from various fields of knowledge.\n\nEach question has 4 answer options, of which only one is correct. You must answer within 30 seconds.\n\nThere are three fireproof amounts:\n- 1 000 $ \n- 32 000 $ \n- 1 000 000 $\n\nThere are also three tips: \n- 50/50: 2 incorrect answers will disappear. \n- Hall help: the hall will help with the answer.\n-Call a friend: within 30 seconds the player can consult a friend by phone.\n\nYou can withdraw the amount at any time until you answer incorrectly. \n\nCountry game!", attributes: myAttribute )
         content.attributedText = myString
         content.backgroundColor = .clear
         content.isEditable = false
@@ -48,7 +48,7 @@ final class RulesViewController: UIViewController {
         return content
     }()
     
-    private let startGameButton = UIButton(title: "На главную")
+    private let startGameButton = UIButton(title: "Back")
     
     
     // MARK: - Life Cycle
