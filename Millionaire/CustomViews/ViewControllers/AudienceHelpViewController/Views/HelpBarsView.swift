@@ -9,7 +9,6 @@ import UIKit
 
 final class HelpBarsView: BaseView {
     
-
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 4
@@ -17,17 +16,13 @@ final class HelpBarsView: BaseView {
         return stackView
     }()
     
-    
     func configure(with data: [HelpBar.Data]) {
         data.forEach {
             let barView = HelpBar(data: $0)
             stackView.addArrangedSubview(barView)
         }
     }
-
-    
 }
-
 
 extension HelpBarsView {
     
@@ -40,7 +35,7 @@ extension HelpBarsView {
     
     override func constraintViews() {
         super.constraintViews()
-  
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -53,5 +48,4 @@ extension HelpBarsView {
         super.configureAppearance()
         stackView.backgroundColor = .secondarySystemBackground
     }
-    
 }

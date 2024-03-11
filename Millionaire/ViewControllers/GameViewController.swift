@@ -369,8 +369,6 @@ extension GameViewController {
         }
         answersStackView.snp.makeConstraints { make in
             make.height.equalTo(250)
-        }
-        answersStackView.snp.makeConstraints { make in
             make.width.equalTo(350)
         }
         

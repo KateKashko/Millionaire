@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MainViewController: UIViewController {
     
@@ -100,29 +101,27 @@ private extension MainViewController {
 //MARK: - Layout
 private extension MainViewController {
     func setupLayout() {
-        millionaireImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            millionaireImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-            millionaireImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            millionaireImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-            millionaireImageView.heightAnchor.constraint(equalTo: millionaireImageView.widthAnchor)
-        ])
         
-        gameRulesButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            gameRulesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            gameRulesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameRulesButton.widthAnchor.constraint(equalToConstant: 264),
-            gameRulesButton.heightAnchor.constraint(equalToConstant: 54)
-        ])
-        
-        startGameButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            startGameButton.bottomAnchor.constraint(equalTo: gameRulesButton.topAnchor, constant: -30),
-            startGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startGameButton.widthAnchor.constraint(equalToConstant: 264),
-            startGameButton.heightAnchor.constraint(equalToConstant: 54)
-        ])
+        millionaireImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(70)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.6)
+            make.height.equalTo(millionaireImageView.snp.width)
+        }
+
+        gameRulesButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(100)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(264)
+            make.height.equalTo(54)
+        }
+
+        startGameButton.snp.makeConstraints { make in
+            make.bottom.equalTo(gameRulesButton.snp.top).offset(-30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(264)
+            make.height.equalTo(54)
+        }
     }
 }
 

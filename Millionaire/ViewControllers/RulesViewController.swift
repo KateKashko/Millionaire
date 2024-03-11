@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 extension NSMutableAttributedString {
     public func getRangeOfString(textToFind:String)->NSRange{
@@ -21,7 +22,6 @@ final class RulesViewController: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let element = UIImageView()
         element.image = UIImage(named: "gameBG")
-        element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
@@ -31,7 +31,6 @@ final class RulesViewController: UIViewController {
         element.font = .systemFont(ofSize: 40, weight: .medium)
         element.textColor = .white
         element.textAlignment = .center
-        element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
@@ -44,7 +43,6 @@ final class RulesViewController: UIViewController {
         content.attributedText = myString
         content.backgroundColor = .clear
         content.isEditable = false
-        content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()
     
@@ -55,7 +53,6 @@ final class RulesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         setViews()
         setupConstraints()
         addAction()
@@ -90,27 +87,28 @@ extension RulesViewController {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainLabel.heightAnchor.constraint(equalToConstant: 40),
-            
-            rulesText.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8),
-            rulesText.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            rulesText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            rulesText.bottomAnchor.constraint(equalTo: startGameButton.topAnchor, constant: -8),
-            
-            startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            startGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startGameButton.widthAnchor.constraint(equalToConstant: 264),
-            startGameButton.heightAnchor.constraint(equalToConstant: 54)
-            
-        ])
+        
+        backgroundImageView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+        
+        mainLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(40)
+        }
+        
+        rulesText.snp.makeConstraints { make in
+            make.top.equalTo(mainLabel.snp.bottom).inset(8)
+            make.bottom.equalTo(startGameButton.snp.top).inset(-8)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
+        startGameButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(264)
+            make.height.equalTo(54)
+        }
     }
 }
