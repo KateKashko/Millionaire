@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ResultViewController: UIViewController {
     
@@ -104,30 +105,31 @@ extension ResultViewController {
 
     private func setupConstraints() {
         
-        let maximumDistance: CGFloat = 100
+        backgroundImageView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            gameIconImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            gameIconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameIconImage.widthAnchor.constraint(equalToConstant: 201),
-            gameIconImage.heightAnchor.constraint(equalToConstant: 201),
-            
-            winAmountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            winAmountLabel.topAnchor.constraint(lessThanOrEqualTo: gameIconImage.bottomAnchor, constant: maximumDistance),
-            
-            winningAmountLabel.topAnchor.constraint(equalTo: winAmountLabel.bottomAnchor, constant: 20),
-            winningAmountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            playAgainButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            playAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playAgainButton.widthAnchor.constraint(equalToConstant: 264),
-            playAgainButton.heightAnchor.constraint(equalToConstant: 54),
-
-        ])
+        gameIconImage.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(201)
+        }
+        
+        winAmountLabel.snp.makeConstraints { make in
+            make.top.lessThanOrEqualTo(gameIconImage.snp.bottom).offset(100)
+            make.centerX.equalToSuperview()
+        }
+        
+        winningAmountLabel.snp.makeConstraints { make in
+            make.top.equalTo(winAmountLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        playAgainButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-50)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(264)
+            make.height.equalTo(54)
+        }
     }
 }
